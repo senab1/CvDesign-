@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 /    /giris_sayfasi.html    200
 
 
+=======
+# Redirects from what the browser requests to what we serve
+/    /giris_sayfasi.html    200
+>>>>>>> 80522bbf23c13a362d8f953ba5a17a3462ba26ab
