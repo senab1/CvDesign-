@@ -1,7 +1,7 @@
 # Redirects from what the browser requests to what we serve
 /    /index.html    200
 /seçim   /sablonunu_sec.html   200
-/mor_cv.html   /mor_cv.html   200
+/mor_cv.html   /bilgilerini_gir.html   200
 /mavi_cv.html   /mavi_cv.html   200
 /fotosuz_cv.html   /fotosuz_cv.html   200
 /ats_cv.html   /ats_cv.html   200
