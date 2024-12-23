@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV Bilgilerini Gir</title>
+  <style>
+    /* Stil kısmını buraya ekledim */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: #f9f9f9;
+    }
+
+    h1 {
+      text-align: center;
+      font-family: 'Verdana', sans-serif;
+      margin: 20px 0;
+    }
+
+    form {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      font-size: 20px;
+      color: #333;
+      font-family: 'Georgia', serif;
+      border-bottom: 2px solid #4CAF50;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    button {
+      padding: 10px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #photo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 2px solid #ddd;
+      margin-bottom: 20px;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #photo-container span {
+      font-size: 14px;
+      color: #666;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    #photo-container img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    #change-photo-btn {
+      background-color: #ff9800;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 4px;
+      font-size: 12px;
+      color: white;
+      cursor: pointer;
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    #change-photo-btn:hover {
+      background-color: #e68900;
+    }
+
+    .education-entry, .work-entry {
+      margin-bottom: 10px;
+    }
+
+    .education-entry input, .work-entry input {
+      width: 80%;
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .education-entry button, .work-entry button {
+      background-color: red;
+      padding: 5px 10px;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .education-entry button:hover, .work-entry button:hover {
+      background-color: #d32f2f;
+    }
+    .certification-entry {
+      margin-bottom: 10px;
+    }
+
+    .certification-entry input {
+      width: 30%;
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .certification-entry button {
+      background-color: red;
+      padding: 5px 10px;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .certification-entry button:hover {
+      background-color: #d32f2f;
+    }
+
+    .language-entry input {
+      width: 80%;
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .language-entry select {
+      width: 80%;
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .language-entry button {
+      background-color: red;
+      padding: 5px 10px;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .language-entry button:hover {
+      background-color: #d32f2f;
+    }
+    .referans-entry {
+      margin-bottom: 10px;
+    }
+
+    .referans-entry input {
+      width: 80%;
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .referans-entry button {
+      background-color: red;
+      padding: 5px 10px;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .referans-entry button:hover {
+      background-color: #d32f2f;
+    }
+
+    .add-reference-button {
+      padding: 10px 15px;
+      background-color: #000000;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .add-reference-button:hover {
+      background-color: #000000;
+    }
+    /* Kişisel Özet ve Beceriler Textarea boyutlandırmasını engelleme */
+#summary, #skills {
+  resize: none; /* Boyutlandırmayı engeller */
+  height: 150px; /* Sabit yükseklik */
+
+  /* Kişisel özet ve beceriler için uygun stil */
+textarea {
+  width: 100%;  /* Genişliği kapsayıcı elementin genişliğine göre ayarlama */
+  height: auto; /* Yüksekliği içeriğe göre otomatik olarak ayarlama */
+  white-space: normal; /* Satır sonlarını zorla yap */
+  word-wrap: break-word; /* Kelimeleri satır sonlarında kır */
+  overflow: hidden; /* Taşma durumunda kaydırma çubuğu gösterme */
+  resize: vertical; /* Yalnızca dikeyde boyutlandırılabilir */
+}
+
+/* Kişisel özet alanı için özel stil */
+#personalSummary {
+  min-height: 100px;  /* Yeterli alan bırakmak için min-height */
+  padding: 10px;
+}
+
+/* Beceri alanı için özel stil */
+#skills {
+  min-height: 100px;  /* Yeterli alan bırakmak için min-height */
+  padding: 10px;
+}
+
+}
+
+
+
+  </style>
+</head>
+<body>
+  <h1>CV Bilgilerini Gir</h1>
+  <form id="cv-form">
+    <div id="photo-container" onclick="document.getElementById('photo').click();">
+      <span>Fotoğraf Yükle</span>
+      <input type="file" id="photo" name="photo" accept="image/*" onchange="previewPhoto(event)" style="display: none;">
+    </div>
+    <button type="button" id="change-photo-btn" style="display:none;" onclick="document.getElementById('photo').click();">Fotoğrafı Değiştir</button>
+
+    <div class="section">
+      <h2>Kişisel Bilgiler</h2>
+      <label for="name">Ad Soyad:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="profession">Unvan:</label>
+      <input type="text" id="profession" name="profession" required>
+
+      <label for="phone">Telefon:</label>
+      <input type="text" id="phone" name="phone" pattern="\d{10}" title="Telefon numarası 10 haneli olmalıdır.">
+
+      <label for="email">E-posta:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="website">Web Sitesi:</label>
+      <input type="text" id="website" name="website">
+
+      <label for="linkedin">LinkedIn:</label>
+      <input type="text" id="linkedin" name="linkedin">
+    </div>
+
+    <div class="section">
+      <h2>Kişisel Özellikler</h2>
+      <label for="summary">Kişisel Özet:</label>
+      <textarea id="summary" name="summary"></textarea>
+
+      <label for="skills">Beceriler:</label>
+      <textarea id="skills" name="skills"></textarea>
+    </div>
+
+    <div class="egitim-bilgileri">
+      <h3>EĞİTİM BİLGİSİ</h3>
+      <div id="education-container">
+          <div class="education-entry">
+              <input type="text" placeholder="Okul Adı">
+              <input type="text" placeholder="Bölüm">
+              <input type="text" placeholder="Mezuniyet Yılı">
+              <button type="button" onclick="removeEducationField(this)">Sil</button>
+          </div>
+      </div>
+      <button type="button" class="add-education-button" onclick="addEducation()">+ Eğitim Ekle</button>
+    </div>
+
+    <div class="section">
+      <h2>İş Deneyimi</h2>
+      <div id="work-container">
+          <div class="work-entry">
+              <input type="text" placeholder="Şirket Adı">
+              <input type="text" placeholder="Pozisyon">
+              <input type="text" placeholder="Başlangıç Yılı">
+              <input type="text" placeholder="Bitiş Yılı">
+              <button type="button" onclick="removeWorkField(this)">Sil</button>
+          </div>
+      </div>
+      <button type="button" class="add-work-button" onclick="addWork()">+ İş Deneyimi Ekle</button>
+    </div>
+
+    <div class="section">
+      <h2>Kurslar ve Sertifikalar</h2>
+      <div id="certifications-container">
+          <div class="certification-entry">
+              <input type="text" placeholder="Kurs/Sertifika Adı">
+              <input type="text" placeholder="Kurum Adı">
+              <input type="text" placeholder="Alındığı Yıl">
+              <button type="button" onclick="removeCertificationField(this)">Sil</button>
+          </div>
+      </div>
+      <button type="button" class="add-certification-button" onclick="addCertification()">+ Kurs/Sertifika Ekle</button>
+    </div>
+
+    <div class="dil-bilgileri">
+      <h3>YABANCI DİLLER</h3>
+      <div id="language-container">
+        <div class="language-entry">
+          <input type="text" placeholder="Dil Adı">
+          <select>
+            <option value="Başlangıç">Başlangıç</option>
+            <option value="Orta">Orta</option>
+            <option value="İleri">İleri</option>
+          </select>
+          <button type="button" onclick="removeLanguageField(this)">Sil</button>
+        </div>
+      </div>
+      <button type="button" class="add-language-button" onclick="addLanguage()">+ Dil Ekle</button>
+    </div>
+
+
+    
+    <div class="section">
+      <h2>Referanslar</h2>
+      <div id="reference-container">
+        <div class="referans-entry">
+          <input type="text" placeholder="Ad Soyad" id="reference-name-1">
+          <input type="text" placeholder="Pozisyon" id="reference-position-1">
+          <input type="text" placeholder="Şirket" id="reference-company-1">
+          <input type="text" placeholder="İletişim" id="reference-contact-1">
+          <button type="button" onclick="removeReferenceField(this)">Sil</button>
+        </div>
+      </div>
+      <button type="button" class="add-reference-button" onclick="addReference()">+ Referans Ekle</button>
+    </div>
+
+    <button type="button" id="preview-button" onclick="updateTemplatePreview()">Önizle</button>
+  </form>
+
+  
+  
+
+  <script>
+    // Fotoğraf önizleme işlevi
+    function previewPhoto(event) {
+      const photoContainer = document.getElementById('photo-container');
+      const changePhotoButton = document.getElementById('change-photo-btn');
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          let img = photoContainer.querySelector('img');
+          if (!img) {
+            img = document.createElement('img');
+            photoContainer.appendChild(img);
+          }
+          img.src = e.target.result;
+          changePhotoButton.style.display = 'none';  // "Fotoğrafı Değiştir" butonunu kaldır
+        };
+        reader.readAsDataURL(file);
+      } else {
+        photoContainer.innerHTML = '<span>Fotoğraf Yükle</span>';
+        changePhotoButton.style.display = 'none';
+      }
+    }
+
+    // Eğitim bilgisi ekleme işlevi
+    function addEducation() {
+      const container = document.getElementById('education-container');
+      const newField = document.createElement('div');
+      newField.classList.add('education-entry');
+      newField.innerHTML = `
+        <input type="text" placeholder="Okul Adı">
+        <input type="text" placeholder="Bölüm">
+        <input type="text" placeholder="Mezuniyet Yılı">
+        <button type="button" onclick="removeEducationField(this)">Sil</button>
+      `;
+      container.appendChild(newField);
+    }
+
+    // Eğitim bilgisi silme işlevi
+    function removeEducationField(button) {
+      button.parentElement.remove();
+    }
+
+    // İş deneyimi ekleme işlevi
+    function addWork() {
+      const container = document.getElementById('work-container');
+      const newField = document.createElement('div');
+      newField.classList.add('work-entry');
+      newField.innerHTML = `
+        <input type="text" placeholder="Şirket Adı">
+        <input type="text" placeholder="Pozisyon">
+        <input type="text" placeholder="Başlangıç Yılı">
+        <input type="text" placeholder="Bitiş Yılı">
+        <button type="button" onclick="removeWorkField(this)">Sil</button>
+      `;
+      container.appendChild(newField);
+    }
+
+    // İş deneyimi silme işlevi
+    function removeWorkField(button) {
+      button.parentElement.remove();
+    }
+
+        // Kurs/Sertifika ekleme işlevi
+        function addCertification() {
+          const container = document.getElementById('certifications-container');
+          const newField = document.createElement('div');
+          newField.classList.add('certification-entry');
+          newField.innerHTML = `
+            <input type="text" placeholder="Kurs/Sertifika Adı">
+            <input type="text" placeholder="Kurum Adı">
+            <input type="text" placeholder="Alındığı Yıl">
+            <button type="button" onclick="removeCertificationField(this)">Sil</button>
+          `;
+          container.appendChild(newField);
+        }
+    
+        // Kurs/Sertifika silme işlevi
+        function removeCertificationField(button) {
+          button.parentElement.remove();
+        }
+
+        function addLanguage() {
+      const container = document.getElementById('language-container');
+      const newField = document.createElement('div');
+      newField.classList.add('language-entry');
+      newField.innerHTML = `
+        <input type="text" placeholder="Dil Adı">
+        <select>
+          <option value="Başlangıç">Başlangıç</option>
+          <option value="Orta">Orta</option>
+          <option value="İleri">İleri</option>
+        </select>
+        <button type="button" onclick="removeLanguageField(this)">Sil</button>
+      `;
+      container.appendChild(newField);
+    }
+
+    // Yabancı dil silme işlevi
+    function removeLanguageField(button) {
+      button.parentElement.remove();
+    }
+
+    function addReference() {
+      const container = document.getElementById('reference-container');
+      const newField = document.createElement('div');
+      newField.classList.add('referans-entry');
+      newField.innerHTML = `
+        <input type="text" placeholder="Ad Soyad">
+        <input type="text" placeholder="Pozisyon">
+        <input type="text" placeholder="Şirket">
+        <input type="text" placeholder="İletişim">
+        <button type="button" onclick="removeReferenceField(this)">Sil</button>
+      `;
+      container.appendChild(newField);
+    }
+
+    // Referans silme işlevi
+    function removeReferenceField(button) {
+      button.parentElement.remove();
+    }
+    
+
+    // CV şablonunu güncelleyip yeni bir pencere açma işlevi
+    function updateTemplatePreview() {
+      const name = document.getElementById('name').value;
+      const profession = document.getElementById('profession').value;
+      const phone = document.getElementById('phone').value;
+      const email = document.getElementById('email').value;
+      const website = document.getElementById('website').value;
+      const linkedin = document.getElementById('linkedin').value;
+      const summary = document.getElementById('summary').value;
+      const skills = document.getElementById('skills').value;
+      const referenceFields = document.querySelectorAll('.referans-entry');
+      let references = [];
+      referenceFields.forEach((field, index) => {
+        const name = field.querySelector('input:nth-child(1)').value;
+        const position = field.querySelector('input:nth-child(2)').value;
+        const company = field.querySelector('input:nth-child(3)').value;
+        const contact = field.querySelector('input:nth-child(4)').value;
+        references.push(`${name} - ${position} (${company}) - İletişim: ${contact}`);
+      });
+      const languageFields = document.querySelectorAll('.language-entry');
+      
+      // Kurslar ve Sertifikalar kısmı
+      const certificationFields = document.querySelectorAll('.certification-entry');
+      const certificationArray = [];
+      certificationFields.forEach(field => {
+        const courseName = field.querySelector('input[placeholder="Kurs/Sertifika Adı"]').value;
+        const institution = field.querySelector('input[placeholder="Kurum Adı"]').value;
+        const year = field.querySelector('input[placeholder="Alındığı Yıl"]').value;
+        if (courseName && institution && year) {
+          certificationArray.push(courseName + ' - ' + institution + ' (' + year + ')');
+        }
+      });
+    
+      // Eğitim bilgileri
+      const educationFields = document.querySelectorAll('.education-entry');
+      const educationArray = [];
+      educationFields.forEach(field => {
+        const school = field.querySelector('input[placeholder="Okul Adı"]').value;
+        const department = field.querySelector('input[placeholder="Bölüm"]').value;
+        const graduationYear = field.querySelector('input[placeholder="Mezuniyet Yılı"]').value;
+        if (school && department && graduationYear) {
+          educationArray.push(school + ' - ' + department + ' (' + graduationYear + ')');
+        }
+      });
+    
+      // İş deneyimi bilgileri
+      const workFields = document.querySelectorAll('.work-entry');
+      const workArray = [];
+      workFields.forEach(field => {
+        const company = field.querySelector('input[placeholder="Şirket Adı"]').value;
+        const position = field.querySelector('input[placeholder="Pozisyon"]').value;
+        const startYear = field.querySelector('input[placeholder="Başlangıç Yılı"]').value;
+        const endYear = field.querySelector('input[placeholder="Bitiş Yılı"]').value;
+        if (company && position && startYear && endYear) {
+          workArray.push(company + ' - ' + position + ' (' + startYear + ' - ' + endYear + ')');
+        }
+      
+      });
+
+      let languages = [];
+      languageFields.forEach(field => {
+        const language = field.querySelector('input').value;
+        const level = field.querySelector('select').value;
+        languages.push(`${language} - ${level}`);
+      });
+    
+    
+      // Verileri bir araya getiriyoruz
+      const dataObject = {
+        name,
+        profession,
+        phone,
+        email,
+        website,
+        linkedin,
+        summary,
+        skills,
+        certifications: certificationArray.length > 0 ? certificationArray.join('<br>') : 'Kurslar ve sertifikalar bilgisi bulunmamaktadır.',
+        references: references.length > 0 ? references.join('<br>') : 'Referans bilgisi bulunmamaktadır.',
+        languages: languages.length > 0 ? languages.join('<br>') : 'Dil bilgisi bulunmamaktadır.',
+        education: educationArray.length > 0 ? educationArray.join('<br>') : 'Eğitim bilgisi bulunmamaktadır.',
+        workExperience: workArray.length > 0 ? workArray.join('<br>') : 'İş deneyimi bulunmamaktadır.',
+        photo: document.querySelector('#photo-container img') ? document.querySelector('#photo-container img').src : ''
+      };
+    
+      // Veriyi localStorage'a kaydediyoruz
+      localStorage.setItem('cvData', JSON.stringify(dataObject));
+    
+    
+      // Şablon seçimini alıp ona göre önizleme aç
+      const urlParams = new URLSearchParams(window.location.search);
+      const selectedTemplate = urlParams.get('template') || 'template1';
+      const templateUrl = selectedTemplate + '_cv.html';  // Template'in doğru dosyasını aç
+
+      window.open(templateUrl, '_blank');
+    }
+  </script>
+</body>
+</html>

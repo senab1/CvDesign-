@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotosuz CV</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 10mm;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items:center;
+            flex-direction: column;
+            font-size: 11pt;
+            overflow: auto;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 210mm;
+            height: 277mm; /* Fixed height to ensure content stays on one page */
+            padding: 10mm;
+            box-sizing: border-box;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            border: 1px solid #ccc;
+            align-items: flex-start;
+            overflow-y: auto; /* Prevents content overflow and adds scroll */
+        }
+
+        .header {
+            text-align: left;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #4c86af;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-family: 'Georgia', serif;
+            font-size: 18pt;
+            color: #2C3E50;
+        }
+
+        .header p {
+            margin: 5px 0;
+            font-family: 'Arial', sans-serif;
+            font-size: 12pt;
+            color: #7F8C8D;
+        }
+
+        .section {
+            margin-top: 15px;
+            margin-bottom: 15px;
+            page-break-before: avoid; /* Prevents section breaks */
+        }
+
+        .section h2 {
+            font-family: 'Arial', sans-serif;
+            font-size: 14pt;
+            margin-bottom: 5px;
+            text-decoration: underline;
+            color: #00518b;
+        }
+
+        .content-item {
+            margin-bottom: 8px;
+        }
+
+        .content-item span {
+            font-weight: bold;
+        }
+
+        .content-item p {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            font-size: 11pt;
+            color: #555;
+        }
+
+        .footer {
+            text-align: left;
+            margin-top: 20px;
+            font-family: 'Arial', sans-serif;
+            font-size: 12pt;
+            color: #7F8C8D;
+        }
+
+        .footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .section ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .section ul li {
+            font-family: 'Arial', sans-serif;
+            font-size: 12pt;
+            color: #555;
+            margin: 0;
+        }
+
+        @media print {
+            body {
+                font-size: 12pt;
+                margin: 0;
+            }
+
+            .header h1 {
+                font-size: 16pt;
+            }
+
+            .section h2 {
+                font-size: 14pt;
+            }
+
+            .footer {
+                font-size: 12pt;
+            }
+
+            .container {
+                padding: 12mm;
+                height: 277mm; /* Ensure the height is fixed for printing */
+                overflow: hidden; /* Hide overflow on print */
+            }
+
+            .section p {
+                white-space: pre-line;
+            }
+
+            /* Preventing content from spilling over */
+            .container {
+                page-break-after: auto;
+                page-break-before: auto;
+            }
+        }
+
+        #download-button {
+            padding: 8px 18px;
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1 id="name">Ad Soyad</h1>
+            <p id="profession">Unvan: Yazılım Geliştirici</p>
+            <p id="contact-info">Telefon: 555-555-5555 | Email: ornek@mail.com | LinkedIn: linkedin.com/in/yourprofile</p>
+        </div>
+
+        <div class="section">
+            <h2>Kişisel Özet</h2>
+            <p id="summary">Kısa bir özgeçmiş yazısı. İş deneyiminizden, yeteneklerinizden ve kariyer hedeflerinizden bahsedin. Bu yazı daha uzun olabilir ve alt satırlara kaymalıdır.</p>
+        </div>
+
+        <div class="section">
+            <h2>İş Deneyimi</h2>
+            <ul id="work-experience">
+                <li>İş deneyimi bilgisi bulunmamaktadır.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Eğitim Bilgileri</h2>
+            <ul id="education">
+                <li>Eğitim bilgisi bulunmamaktadır.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Beceriler</h2>
+            <div id="skills" class="content-item">
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Kurslar ve Sertifikalar</h2>
+            <ul id="certifications">
+                <li>Sertifikalar bilgisi bulunmamaktadır.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Yabancı Diller</h2>
+            <ul id="languages">
+                <li>Yabancı dil bilgisi bulunmamaktadır.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Referanslar</h2>
+            <ul id="references">
+                <li>Referanslar bilgisi bulunmamaktadır.</li>
+            </ul>
+        </div>
+        
+    </div>
+
+    <button id="download-button">PDF Olarak İndir</button>
+
+    <button onclick="downloadWord()" style="padding: 10px 20px; background-color: #27ae60; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top: 20px;">
+        Word Olarak İndir
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+    <script>
+        window.onload = function() {
+            const cvData = JSON.parse(localStorage.getItem('cvData'));
+
+            if (cvData) {
+                document.getElementById('name').textContent = cvData.name || 'Ad Soyad';
+                document.getElementById('profession').textContent = cvData.profession || 'Unvan';
+                document.getElementById('contact-info').textContent = `Telefon: ${cvData.phone || 'Telefon yok'} | Email: ${cvData.email || 'E-posta yok'} | LinkedIn: ${cvData.linkedin || 'LinkedIn yok'}`;
+                document.getElementById('summary').textContent = cvData.summary || 'Kişisel özet yok';
+
+                const workExperience = cvData.workExperience || "";
+                document.getElementById('work-experience').innerHTML = workExperience ? workExperience.split(',').map(exp => `<li>${exp}</li>`).join('') : "<li>İş deneyimi bilgisi bulunmamaktadır.</li>";
+
+                document.getElementById('education').innerHTML = (cvData.education || "").split(',').map(edu => `<li>${edu}</li>`).join('');
+                const skills = cvData.skills || "";
+                document.getElementById('skills').innerHTML = skills.split(',').map(skill => `<p>${skill}</p>`).join('') || "<p>Beceriler bilgisi bulunmamaktadır.</p>";
+
+                document.getElementById('certifications').innerHTML = (cvData.certifications || "").split(',').map(cert => `<li>${cert}</li>`).join('');
+                document.getElementById('languages').innerHTML = (cvData.languages || "").split(',').map(lang => `<li>${lang}</li>`).join('');
+                document.getElementById('references').innerHTML = (cvData.references || "").split(',').map(ref => `<li>${ref}</li>`).join('');
+            }
+        };
+
+        document.getElementById('download-button').addEventListener('click', function() {
+            const element = document.querySelector('.container');
+            html2pdf().from(element).save();
+        });
+
+        function downloadWord() {
+    const element = document.querySelector('.container');
+    const content = element.innerHTML;
+
+    // Inline styles for headers to ensure underline in Word
+    const contentWithInlineStyles = content.replace(/<h2>/g, '<h2 style="text-decoration: underline; font-size: 18px; color: #00518b;">');
+
+    const header = `
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+  <head>
+    <meta charset='utf-8'>
+    <title>CV</title>
+    <style>
+      body { font-family: Arial, sans-serif; color: #333; }
+      ul { list-style-type: none; padding: 0; }
+      li { margin-bottom: 10px; }
+    </style>
+  </head>
+  <body>
+`;
+
+    const footer = `</body></html>`;
+    const sourceHTML = header + contentWithInlineStyles + footer;
+
+    const blob = new Blob(['\ufeff', sourceHTML], { type: 'application/msword' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'cv.doc';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV Hazırlama</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #e2e4e8; /* Arka plan rengini #e2e4e8 olarak ayarladım */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* İçeriği ortalamak için */
+      justify-content: center;
+      text-align: center;
+      width: 100%;
+      max-width: 1200px;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    /* Logo Konumu */
+    #logo {
+      width: 400px; /* Logoyu büyüttüm */
+      margin-top: -10px; /* Logoyu biraz daha yukarı aldım */
+      margin-left: 10px; /* Logoyu biraz daha sola kaydırdım */
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    /* İlk İzlenim Görseli */
+    #ilkizlenim {
+      width: 90%; /* İlk izlenim görselinin boyutunu artırdım */
+      margin-top: 300px; /* Görseli daha aşağı kaydırdım */
+      max-width: 1200px; /* Maksimum genişlik sınırını artırdım */
+    }
+
+    /* CV Oluştur Butonu */
+    #cv-button {
+      background-color: #2d2a2a;
+      color: white;
+      padding: 15px 30px; /* Butonu daha uzun ve dar yapacak şekilde padding'i değiştirdim */
+      font-size: 18px;
+      border: none;
+      border-radius: 50px; /* Butonu ovalleştirdim */
+      cursor: pointer;
+      margin-top: 30px; /* Buton ile görseller arasındaki mesafeyi kısalttım */
+      transition: background-color 0.3s ease;
+    }
+
+    #cv-button:hover {
+      background-color: #5e5b664d;
+    }
+
+    /* Adımlar Görseli */
+    #adımlar {
+      width: 85%; /* Adımlar görselini biraz daha genişlettim */
+      margin-top: 40px; /* Görseli biraz daha aşağı kaydırdım */
+      max-width: 1200px; /* Maksimum genişlik sınırını artırdım */
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Logo -->
+    <img src="logo.png" alt="Logo" id="logo">
+
+    <!-- İlk İzlenim Görseli -->
+    <img src="ilkizlenim.png" alt="İlk İzlenim" id="ilkizlenim">
+
+    <!-- CV Oluştur Butonu -->
+    <button id="cv-button" onclick="window.location.href='sablonunu_sec.html'">CV Oluştur</button>
+
+    <!-- Adımlar Görseli -->
+    <img src="adımlar.png" alt="Adımlar" id="adımlar">
+  </div>
+
+</body>
+</html>
