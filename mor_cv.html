@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mor CV</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      color: #333;
+      line-height: 1.6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      height: 100%;
+      margin: 0;
+      flex-direction: column; /* Body'yi dikey yönde hizala */
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 35% 1fr; /* Sol (35%) ve sağ (kalan alan) */
+      grid-template-rows: auto;
+      width: 210mm; /* A4 genişliği */
+      height: 297mm; /* A4 yüksekliği */
+      background-color: white;
+      padding: 20px;
+      box-sizing: border-box;
+      overflow: hidden;
+      font-size: 14px;
+    }
+
+    .sidebar {
+      background-color: #e9d8f4;
+      padding: 20px;
+      border-radius: 8px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .sidebar h2 {
+      font-size: 18px;
+      margin-bottom: 15px; /* Başlık ve içerik arasındaki boşluk */
+      border-bottom: 2px solid #c5aed7;
+      padding-bottom: 5px;
+    }
+
+    /* Kişisel özet ve kişisel bilgiler arasındaki mesafeyi artırma */
+    .sidebar h2 + p {
+      margin-top: 20px; /* Kişisel özet ile kişisel bilgiler arasındaki boşluk */
+    }
+
+    .sidebar ul {
+      margin-top: 15px; /* Kişisel bilgilerin altındaki liste öğelerine biraz mesafe ekleyelim */
+    }
+
+    .sidebar .photo {
+      width: 100px;
+      height: 100px;
+      background-color: #ccc;
+      border-radius: 50%;
+      margin: 20px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: #666;
+      background-position: center;
+      background-size: cover;
+    }
+
+    /* Sol taraftaki içeriklerin mesafelerini dinamik hale getirmek için */
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      margin-bottom: 15px; /* Liste öğeleri arasındaki boşluk */
+      word-wrap: break-word;
+      white-space: pre-wrap;
+    }
+
+    .content {
+      padding: 20px;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .content h1 {
+      font-size: 26px;
+      margin-bottom: 15px; /* Başlık ve içerik arasındaki boşluk */
+    }
+
+    .content h2 {
+      font-size: 20px;
+      margin-top: 20px;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+      margin-bottom: 15px; /* Başlık ve içerik arasındaki boşluk */
+    }
+
+    .content .section {
+      margin-bottom: 20px;
+    }
+
+    .content ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .content ul li {
+      margin-bottom: 15px; /* Liste öğeleri arasındaki boşluk */
+      word-wrap: break-word;
+      white-space: pre-wrap;
+    }
+
+    /* İçeriğin uzunluğuna göre otomatik hizalama */
+    @media print {
+      body {
+        font-size: 12px;
+        padding: 0;
+        background: none;
+        margin: 0;
+      }
+
+      .container {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      .sidebar {
+        background-color: #e9d8f4;
+        border-radius: 0;
+      }
+
+      .content h1 {
+        font-size: 22px;
+      }
+
+      .content h2 {
+        font-size: 18px;
+      }
+    }
+
+    /* Kişisel özetin uzunluğuna göre dinamik boşluk ekleme */
+    .sidebar p {
+      margin-bottom: 15px; /* Kişisel özetin altındaki başlıkla arasındaki boşluk */
+    }
+
+    /* Kişisel özetin altındaki başlık ile arasındaki mesafeyi dinamik hale getirme */
+    .sidebar p:last-child {
+      margin-bottom: 30px; /* Kişisel özetin sonrasında daha fazla boşluk bırak */
+    }
+
+    /* PDF İndir Butonunun konumu */
+    .download-btn {
+      margin-top: 20px;
+      align-self: flex-start; /* Sol tarafta hizalar */
+      padding: 10px 20px;
+      background-color: #2980b9;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Sayfa sonundaki butonun yerleşimi */
+    .download-btn-container {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <div class="photo" id="photo">Fotoğraf</div>
+      <h2>Kişisel Özet</h2>
+      <p id="summary">Ehliyet: B</p>
+      <h2>Kişisel Bilgiler</h2>
+      <ul>
+        <li id="sidebar-phone">📞 Telefon</li>
+        <li id="sidebar-email">📧 E-posta</li>
+        <li id="sidebar-website">🌐 Web Sitesi</li>
+        <li id="sidebar-linkedin">🔗 LinkedIn</li>
+      </ul>
+      <h2>Yabancı Diller</h2>
+      <ul id="sidebar-languages">
+        <li>Almanca - B1</li>
+        <li>İngilizce - B1</li>
+      </ul>
+      <h2>Beceriler</h2>
+      <ul id="sidebar-skills">
+        <li>SEO Metin Yazarlığı</li>
+        <li>Online İçerik Yönetimi</li>
+        <li>Kuram Yönetimi</li>
+        <li>Dijital Pazarlama</li>
+      </ul>
+    </div>
+    <div class="content">
+      <h1 id="content-name">Ad Soyad</h1>
+      <p id="content-profession">Meslek Adı</p>
+      <div class="section">
+        <h2>İş Deneyimi</h2>
+        <ul id="work-experience">
+          <!-- İş deneyimi listesi -->
+        </ul>
+      </div>
+      <div class="section">
+        <h2>Eğitim Bilgileri</h2>
+        <ul id="education">
+          <li>2004-2008: İletişim Lisans - Marmara Üniversitesi</li>
+          <li>2008-2010: Medya ve İletişim Yüksek Lisans - Marmara Üniversitesi</li>
+        </ul>
+      </div>
+      <div class="section">
+        <h2>Kurslar ve Sertifikalar</h2>
+        <ul id="certifications">
+          <li>2008: Udemy - Yazarlık Eğitimi</li>
+          <li>2008-2010: SEO Uyumlu İçerik Yazarlığı</li>
+          <li>2008: Enstitü - İçerik Editörlüğü</li>
+        </ul>
+      </div>
+      <div class="section">
+        <h2>Referanslar</h2>
+        <ul id="references">
+          <li>Ad Soyad - Firma, İletişim</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="download-btn-container">
+    <button onclick="downloadPDF()" class="download-btn">PDF Olarak İndir</button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+  <script>
+    const cvData = JSON.parse(localStorage.getItem('cvData'));
+
+    if (cvData) {
+      document.getElementById('content-name').textContent = cvData.name || "Ad Soyad";
+      document.getElementById('content-profession').textContent = cvData.profession || "Meslek Adı";
+      document.getElementById('sidebar-phone').textContent = `📞 ${cvData.phone || "Telefon"}`;
+      document.getElementById('sidebar-email').textContent = `📧 ${cvData.email || "E-posta"}`;
+      document.getElementById('sidebar-website').textContent = `🌐 ${cvData.website || "Web Sitesi"}`;
+      document.getElementById('sidebar-linkedin').textContent = `🔗 ${cvData.linkedin || "LinkedIn"}`;
+      document.getElementById('summary').textContent = cvData.summary || "Kişisel Özet";
+
+      const mapToListItems = (data) => data ? data.split(',').map(item => `<li>${item}</li>`).join('') : '';
+
+      document.getElementById('sidebar-languages').innerHTML = mapToListItems(cvData.languages || "");
+      document.getElementById('sidebar-skills').innerHTML = mapToListItems(cvData.skills || "");
+      document.getElementById('work-experience').innerHTML = mapToListItems(cvData.workExperience || "İş deneyimi bulunmamaktadır.");
+      document.getElementById('education').innerHTML = mapToListItems(cvData.education || "");
+      document.getElementById('certifications').innerHTML = mapToListItems(cvData.certifications || "");
+      document.getElementById('references').innerHTML = mapToListItems(cvData.references || "");
+
+      if (cvData.photo) {
+        document.getElementById('photo').style.backgroundImage = `url(${cvData.photo})`;
+        document.getElementById('photo').textContent = '';
+      }
+    }
+
+    function downloadPDF() {
+      const element = document.querySelector('.container');
+      const options = {
+        margin: [0, 0, 0, 0],
+        filename: 'Mor_CV.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { 
+          scale: 2,  // Daha düşük ölçek, daha fazla içeriği sığdırabilir
+          scrollX: 0, 
+          scrollY: 0, 
+          useCORS: true 
+        },
+        jsPDF: { 
+          unit: 'mm', 
+          format: 'a4', 
+          orientation: 'portrait',
+          autoPaging: false,  // Sayfa otomatik olarak eklenmesin
+          putOnlyUsedFonts: true,
+          compress: true
+        }
+      };
+
+      html2pdf().set(options).from(element).toPdf().get('pdf').then(function(pdf) {
+        // PDF'in sadece bir sayfada yer alacak şekilde ayarlanması
+        const totalPages = pdf.internal.pages.length;
+        if (totalPages > 1) {
+          // Eğer ikinci sayfa varsa, onu sil
+          pdf.deletePage(2);
+        }
+
+        // PDF'i kaydet
+        pdf.save();
+      });
+    }
+  </script>
+</body>
+</html>

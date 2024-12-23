@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV Şablonunu Seç</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e2e4e8;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 40px;
+    }
+
+    .template-gallery {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .template-card {
+      background-color: white;
+      border: 1px solid #ddd;
+      flex: 1 1 22%;
+      max-width: 22%;
+      padding: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      margin-bottom: 20px;
+    }
+
+    .template-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .template-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .template-card h3 {
+      margin-top: 10px;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>CV Şablonunu Seç</h1>
+
+    <div class="template-gallery">
+      <!-- Mor CV -->
+      <div class="template-card" onclick="selectTemplate('mor')">
+        <img src="morcv.png" alt="Mor CV"><a href=""></a>
+      </div>
+
+      <!-- Mavi CV -->
+      <div class="template-card" onclick="selectTemplate('mavi')">
+        <img src="mavicv.png" alt="Mavi CV">
+      </div>
+
+      <!-- Fotosuz CV -->
+      <div class="template-card" onclick="selectTemplate('fotosuz')">
+        <img src="fotosuzcv.jpeg" alt="Fotosuz CV">
+      </div>
+
+      <!-- ATS CV -->
+      <div class="template-card" onclick="selectTemplate('ats')">
+        <img src="atscv.jpeg" alt="ATS CV">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Şablon seçildiğinde URL'yi güncelle ve index.html sayfasına yönlendir
+    function selectTemplate(template) {
+      const url = new URL(window.location.href);
+      
+      // Şablon parametresini URL'ye ekle
+      let templateUrl;
+      switch (template) {
+        case 'mor':
+          templateUrl = 'mor_cv.html';
+          break;
+        case 'mavi':
+          templateUrl = 'mavi_cv.html';
+          break;
+        case 'fotosuz':
+          templateUrl = 'fotosuz_cv.html';
+          break;
+        case 'ats':
+          templateUrl = 'ats_cv.html';
+          break;
+        default:
+          templateUrl = 'index.html'; // Varsayılan olarak index.html
+          break;
+      }
+
+      // Şablon bilgisiyle birlikte yönlendirme yapılır
+      window.location.href = `index.html?template=${template}&url=${templateUrl}`; // index.html sayfasına yönlendirme yapılır
+    }
+  </script>
+
+</body>
+</html>
