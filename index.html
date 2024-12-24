@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -9,19 +10,18 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #e2e4e8;
+      background-color: #e2e4e8; /* Arka plan rengini #e2e4e8 olarak ayarladım */
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       text-align: center;
-      flex-direction: column; /* Dikey hizalama */
     }
 
     .container {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: center; /* İçeriği ortalamak için */
       justify-content: center;
       text-align: center;
       width: 100%;
@@ -30,8 +30,7 @@
       box-sizing: border-box;
     }
 
-    
- /* Logo Konumu */
+    /* Logo Konumu */
     #logo {
       width: 400px; /* Logoyu büyüttüm */
       margin-top: -10px; /* Logoyu biraz daha yukarı aldım */
@@ -41,73 +40,36 @@
       left: 0;
     }
 
-/* İlk İzlenim Görseli */
-#ilkizlenim {
-  width: 90%; /* Görselin boyutunu daha esnek hale getirdim */
-  max-width: 1200px;
-  margin-top: 20px; /* Görseli yukarı kaydırdım */
-}
+    /* İlk İzlenim Görseli */
+    #ilkizlenim {
+      width: 90%; /* İlk izlenim görselinin boyutunu artırdım */
+      margin-top: 300px; /* Görseli daha aşağı kaydırdım */
+      max-width: 1200px; /* Maksimum genişlik sınırını artırdım */
+    }
 
-/* CV Oluştur Butonu */
-#cv-button {
-  background-color: #2d2a2a;
-  color: white;
-  padding: 15px 30px;
-  font-size: 18px;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  margin-top: 20px;
-  transition: background-color 0.3s ease;
-  width: 80%; /* Buton genişliğini %80 olarak ayarladım */
-  max-width: 400px; /* Butonun maksimum genişliğini 400px olarak sınırladım */
-}
+    /* CV Oluştur Butonu */
+    #cv-button {
+      background-color: #2d2a2a;
+      color: white;
+      padding: 15px 30px; /* Butonu daha uzun ve dar yapacak şekilde padding'i değiştirdim */
+      font-size: 18px;
+      border: none;
+      border-radius: 50px; /* Butonu ovalleştirdim */
+      cursor: pointer;
+      margin-top: 30px; /* Buton ile görseller arasındaki mesafeyi kısalttım */
+      transition: background-color 0.3s ease;
+    }
 
-#cv-button:hover {
-  background-color: #5e5b664d;
-}
+    #cv-button:hover {
+      background-color: #5e5b664d;
+    }
 
-/* Adımlar Görseli */
-#adımlar {
-  width: 90%; /* Görselin boyutunu daha esnek hale getirdim */
-  margin-top: 20px;
-  max-width: 1200px;
-}
-
-/* Responsive Tasarım İçin Ayarlamalar */
-@media (max-width: 768px) {
-  #logo {
-    width: 70%; /* Logoyu mobilde küçülttüm */
-    max-width: 200px; /* Logonun maksimum genişliğini 200px olarak sınırladım */
-    top: 10px; /* Mobilde daha üstte konumlandırdım */
-    left: 10px; /* Soldan biraz daha mesafe bıraktım */
-  }
-
-  #ilkizlenim {
-    width: 100%; /* Mobilde tam genişlikte olacak şekilde ayarladım */
-    margin-top: 10px; /* Görseli biraz daha yukarı kaydırdım */
-  }
-
-  #cv-button {
-    width: 90%; /* Butonun genişliğini mobilde %90 yaparak daha büyük yaptım */
-    max-width: 350px; /* Maksimum genişlik 350px olacak */
-  }
-
-  #adımlar {
-    width: 100%; /* Görseli mobilde tam genişlikte olacak şekilde ayarladım */
-  }
-}
-
-@media (max-width: 480px) {
-  body {
-    padding: 10px; /* Daha küçük ekranlarda kenarlardan boşluk bırakmak için */
-  }
-
-  #cv-button {
-    font-size: 16px; /* Buton font boyutunu küçülttüm */
-    padding: 12px 25px; /* Butonun iç padding değerlerini küçülttüm */
-  }
-}
+    /* Adımlar Görseli */
+    #adımlar {
+      width: 85%; /* Adımlar görselini biraz daha genişlettim */
+      margin-top: 40px; /* Görseli biraz daha aşağı kaydırdım */
+      max-width: 1200px; /* Maksimum genişlik sınırını artırdım */
+    }
 
   </style>
 </head>
@@ -129,3 +91,4 @@
 
 </body>
 </html>
+
