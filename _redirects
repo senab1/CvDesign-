@@ -1,10 +1,25 @@
-# Redirects from what the browser requests to what we serve
 /    /index.html    200
 /seçim   /sablonunu_sec.html   200
 /mor_cv.html   /bilgilerini_gir.html   200
 /mavi_cv.html   /bilgilerini_gir.html   200
 /fotosuz_cv.html   /bilgilerini_gir.html   200
 /ats_cv.html   /bilgilerini_gir.html   200
+
+# Önizleme ve indirme rotaları
+/mor_cv/önizle   /mor_cv_onizleme.html   200
+/mavi_cv/önizle   /mavi_cv_onizleme.html   200
+/fotosuz_cv/önizle   /fotosuz_cv_onizleme.html   200
+/ats_cv/önizle   /ats_cv_onizleme.html   200
+
+/mor_cv/indir/pdf   /mor_cv_indir_pdf.html   200
+/mavi_cv/indir/pdf   /mavi_cv_indir_pdf.html   200
+/fotosuz_cv/indir/pdf   /fotosuz_cv_indir_pdf.html   200
+/ats_cv/indir/pdf   /ats_cv_indir_pdf.html   200
+
+/mor_cv/indir/word   /mor_cv_indir_word.html   200
+/mavi_cv/indir/word   /mavi_cv_indir_word.html   200
+/fotosuz_cv/indir/word   /fotosuz_cv_indir_word.html   200
+/ats_cv/indir/word   /ats_cv_indir_word.html   200
 
 
 
