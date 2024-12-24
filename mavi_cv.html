@@ -212,13 +212,16 @@
     }
 
     function updateListById(elementId, data) {
-      const list = document.getElementById(elementId);
-      if (data && Array.isArray(data)) {
-        list.innerHTML = data.map(item => `<li>${item}</li>`).join('');
-      } else {
-        list.innerHTML = '<li>Bilgi yok.</li>';
-      }
-    }
+  const list = document.getElementById(elementId);
+  if (data && Array.isArray(data)) {
+    list.innerHTML = data.map(item => `<li>${item}</li>`).join('');
+  } else if (data) {
+    list.innerHTML = `<li>${data}</li>`; // Eğer sadece string ise
+  } else {
+    list.innerHTML = '<li>Bilgi yok.</li>';
+  }
+}
+
 
     function downloadPDF() {
       const element = document.querySelector('.container');
