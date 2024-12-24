@@ -25,7 +25,7 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      flex-direction: column; /* Yeni düzenleme */
+      flex-direction: column;
     }
 
     .container {
@@ -37,7 +37,7 @@
       border-radius: 10px;
       overflow: hidden;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      margin-bottom: 20px; /* Yeni düzenleme */
+      margin-bottom: 20px;
     }
 
     .sidebar {
@@ -200,6 +200,7 @@
     };
 
     function updateCV(cvData) {
+      // Profil bilgilerini güncelleme
       document.getElementById('profile-name').innerText = cvData.name || 'Ad Soyad';
       document.getElementById('profile-profession').innerText = cvData.profession || 'Meslek';
       document.getElementById('profile-phone').innerText = cvData.phone || 'Telefon';
@@ -208,10 +209,12 @@
       document.getElementById('profile-linkedin').innerText = cvData.linkedin || 'LinkedIn';
       document.getElementById('profile-summary').innerText = cvData.summary || 'Kısaca kendinizi tanıtın...';
 
+      // Fotoğrafı güncelleme
       if (cvData.photo) {
         document.getElementById('profile-photo').style.backgroundImage = `url('${cvData.photo}')`;
       }
 
+      // Listeleri güncelleme
       updateListById('education-list', cvData.education);
       updateListById('work-experience-list', cvData.workExperience);
       updateListById('skills-list', cvData.skills);
