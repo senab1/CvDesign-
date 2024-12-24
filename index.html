@@ -31,79 +31,85 @@
     }
 
     /* Logo Konumu */
-    #logo {
-      width: 80%; /* Logoyu daha küçük hale getirdim */
-      max-width: 400px; /* Maksimum genişlik */
-      margin-top: -10px;
-      margin-left: 10px;
-      position: relative;
-    }
+  /* Logo Konumu */
+#logo {
+  width: 80%; /* Logoyu daha küçük hale getirdim */
+  max-width: 200px; /* Maksimum genişlik */
+  position: absolute; /* Logo sabitlenmiş konumda olacak */
+  top: 20px; /* Üstten 20px mesafe bırakıldı */
+  left: 20px; /* Soldan 20px mesafe bırakıldı */
+  margin-top: 0;
+  margin-left: 0;
+}
 
-    /* İlk İzlenim Görseli */
-    #ilkizlenim {
-      width: 90%; /* Görselin boyutunu daha esnek hale getirdim */
-      max-width: 1200px;
-      margin-top: 20px; /* Görseli yukarı kaydırdım */
-    }
+/* İlk İzlenim Görseli */
+#ilkizlenim {
+  width: 90%; /* Görselin boyutunu daha esnek hale getirdim */
+  max-width: 1200px;
+  margin-top: 20px; /* Görseli yukarı kaydırdım */
+}
 
-    /* CV Oluştur Butonu */
-    #cv-button {
-      background-color: #2d2a2a;
-      color: white;
-      padding: 15px 30px;
-      font-size: 18px;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      margin-top: 20px;
-      transition: background-color 0.3s ease;
-      width: 80%; /* Buton genişliğini %80 olarak ayarladım */
-      max-width: 400px; /* Butonun maksimum genişliğini 400px olarak sınırladım */
-    }
+/* CV Oluştur Butonu */
+#cv-button {
+  background-color: #2d2a2a;
+  color: white;
+  padding: 15px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+  width: 80%; /* Buton genişliğini %80 olarak ayarladım */
+  max-width: 400px; /* Butonun maksimum genişliğini 400px olarak sınırladım */
+}
 
-    #cv-button:hover {
-      background-color: #5e5b664d;
-    }
+#cv-button:hover {
+  background-color: #5e5b664d;
+}
 
-    /* Adımlar Görseli */
-    #adımlar {
-      width: 90%; /* Görselin boyutunu daha esnek hale getirdim */
-      margin-top: 20px;
-      max-width: 1200px;
-    }
+/* Adımlar Görseli */
+#adımlar {
+  width: 90%; /* Görselin boyutunu daha esnek hale getirdim */
+  margin-top: 20px;
+  max-width: 1200px;
+}
 
-    /* Responsive Tasarım İçin Ayarlamalar */
-    @media (max-width: 768px) {
-      #logo {
-        width: 80%; /* Logoyu mobilde küçülttüm */
-        max-width: 300px; /* Logonun maksimum genişliğini 300px olarak sınırladım */
-      }
+/* Responsive Tasarım İçin Ayarlamalar */
+@media (max-width: 768px) {
+  #logo {
+    width: 70%; /* Logoyu mobilde küçülttüm */
+    max-width: 200px; /* Logonun maksimum genişliğini 200px olarak sınırladım */
+    top: 10px; /* Mobilde daha üstte konumlandırdım */
+    left: 10px; /* Soldan biraz daha mesafe bıraktım */
+  }
 
-      #ilkizlenim {
-        width: 100%; /* Mobilde tam genişlikte olacak şekilde ayarladım */
-        margin-top: 10px; /* Görseli biraz daha yukarı kaydırdım */
-      }
+  #ilkizlenim {
+    width: 100%; /* Mobilde tam genişlikte olacak şekilde ayarladım */
+    margin-top: 10px; /* Görseli biraz daha yukarı kaydırdım */
+  }
 
-      #cv-button {
-        width: 90%; /* Butonun genişliğini mobilde %90 yaparak daha büyük yaptım */
-        max-width: 350px; /* Maksimum genişlik 350px olacak */
-      }
+  #cv-button {
+    width: 90%; /* Butonun genişliğini mobilde %90 yaparak daha büyük yaptım */
+    max-width: 350px; /* Maksimum genişlik 350px olacak */
+  }
 
-      #adımlar {
-        width: 100%; /* Görseli mobilde tam genişlikte olacak şekilde ayarladım */
-      }
-    }
+  #adımlar {
+    width: 100%; /* Görseli mobilde tam genişlikte olacak şekilde ayarladım */
+  }
+}
 
-    @media (max-width: 480px) {
-      body {
-        padding: 10px; /* Daha küçük ekranlarda kenarlardan boşluk bırakmak için */
-      }
+@media (max-width: 480px) {
+  body {
+    padding: 10px; /* Daha küçük ekranlarda kenarlardan boşluk bırakmak için */
+  }
 
-      #cv-button {
-        font-size: 16px; /* Buton font boyutunu küçülttüm */
-        padding: 12px 25px; /* Butonun iç padding değerlerini küçülttüm */
-      }
-    }
+  #cv-button {
+    font-size: 16px; /* Buton font boyutunu küçülttüm */
+    padding: 12px 25px; /* Butonun iç padding değerlerini küçülttüm */
+  }
+}
+
   </style>
 </head>
 <body>
