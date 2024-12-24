@@ -205,13 +205,13 @@
         document.getElementById('profile-photo').style.backgroundImage = `url('${cvData.photo}')`;
       }
 
-      document.getElementById('education-list').innerText = cvData.education || 'Kısaca kendinizi tanıtın...';
-      updateList('work-experience-list', cvData.workExperience);
-      updateList('skills-list', cvData.skills);
-      updateList('references-list', cvData.references);
+      updateListById('education-list', cvData.education);
+      updateListById('work-experience-list', cvData.workExperience);
+      updateListById('skills-list', cvData.skills);
+      updateListById('references-list', cvData.references);
     }
 
-    function updateList(elementId, data) {
+    function updateListById(elementId, data) {
       const list = document.getElementById(elementId);
       if (data && Array.isArray(data)) {
         list.innerHTML = data.map(item => `<li>${item}</li>`).join('');
