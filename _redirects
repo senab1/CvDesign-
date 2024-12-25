@@ -1,4 +1,5 @@
 /    /index.html    200
+/sitemap.xml  /sitemap.xml  200
 /seçim   /sablonunu_sec.html   200
 /mor_cv.html   /bilgilerini_gir.html   200
 /mavi_cv.html   /bilgilerini_gir.html   200
@@ -21,7 +22,7 @@
 /fotosuz_cv/indir/word   /fotosuz_cv_indir_word.html   200
 /ats_cv/indir/word   /ats_cv_indir_word.html   200
 
-/sitemap.xml  /sitemap.xml  200
+
 
 
 
