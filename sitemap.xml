@@ -15,22 +15,10 @@
         <lastmod>2024-12-25T13:40:32+00:00</lastmod>
     </url>
 
-    <!-- Mor Şablon Bilgi Girişi -->
-    <url>
-        <loc>https://cvdesign.netlify.app/bilgilerini_gir.html?template=mor&amp;url=mor_cv.html</loc>
-        <lastmod>2024-12-25T13:41:27+00:00</lastmod>
-    </url>
-
     <!-- Mor CV -->
     <url>
         <loc>https://cvdesign.netlify.app/mor_cv.html</loc>
         <lastmod>2024-12-25T13:42:25+00:00</lastmod>
-    </url>
-
-    <!-- Mavi Şablon Bilgi Girişi -->
-    <url>
-        <loc>https://cvdesign.netlify.app/bilgilerini_gir.html?template=mavi&amp;url=mavi_cv.html</loc>
-        <lastmod>2024-12-25T13:44:01+00:00</lastmod>
     </url>
 
     <!-- Mavi CV -->
@@ -39,22 +27,10 @@
         <lastmod>2024-12-25T13:44:45+00:00</lastmod>
     </url>
 
-    <!-- Fotosuz Şablon Bilgi Girişi -->
-    <url>
-        <loc>https://cvdesign.netlify.app/bilgilerini_gir.html?template=fotosuz&amp;url=fotosuz_cv.html</loc>
-        <lastmod>2024-12-25T13:45:48+00:00</lastmod>
-    </url>
-
     <!-- Fotosuz CV -->
     <url>
         <loc>https://cvdesign.netlify.app/fotosuz_cv.html</loc>
         <lastmod>2024-12-25T13:52:06+00:00</lastmod>
-    </url>
-
-    <!-- ATS Şablon Bilgi Girişi -->
-    <url>
-        <loc>https://cvdesign.netlify.app/bilgilerini_gir.html?template=ats&amp;url=ats_cv.html</loc>
-        <lastmod>2024-12-25T13:46:49+00:00</lastmod>
     </url>
 
     <!-- ATS CV -->
