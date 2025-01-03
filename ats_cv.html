@@ -103,22 +103,33 @@
             font-size: 0.9em;
         }
 
-        @media print {
-            .cv-container {
-                margin: 0;
-                width: 100%;
-                height: auto;
-                font-size: 12px;
-                box-shadow: none;
-            }
+            @media print {
+        body {
+            margin: 0;
+            padding: 0;
+            width: 210mm;
+            height: 297mm;
+        }
 
-            h1 {
-                font-size: 1.6em;
-            }
+        .cv-container {
+            margin: auto;
+            width: 190mm; /* A4 boyutu için genişlik */
+            height: auto; /* Otomatik yükseklik */
+            padding: 20mm; /* Kenar boşlukları */
+            box-shadow: none;
+            page-break-after: always; /* Sayfa sonu ayırıcı */
+        }
 
-            h2 {
-                font-size: 1.3em;
-            }
+        h1, h2, h3, p, ul {
+            font-size: 14px;
+        }
+    }
+
+    @media screen {
+        .cv-container {
+            max-width: 800px;
+        }
+    }
 
             .contact-info p {
                 font-size: 0.8em;
@@ -341,17 +352,25 @@ document.getElementById('skills').innerHTML = skills
             alert('Veriler kaydedildi.');
         }
 
-        function downloadPDF() {
-            const element = document.querySelector('.cv-container'); // PDF'yi almak istediğiniz öğe
-            html2pdf()
-                .from(element)
-                .set({
-                    html2canvas: {
-                        scale: 3 // Bu değeri artırarak çözünürlüğü yükseltebilirsiniz
-                    }
-                })
-                .save('cv.pdf');
-        }   
+       <script>
+    function downloadPDF() {
+        const element = document.querySelector('.cv-container'); // PDF'yi almak istediğiniz öğe
+        html2pdf()
+            .from(element)
+            .set({
+                margin: [10, 10], // PDF kenar boşlukları
+                filename: 'cv.pdf',
+                jsPDF: {
+                    unit: 'mm',
+                    format: 'a4',
+                    orientation: 'portrait',
+                },
+                html2canvas: {
+                    scale: 2, // Çözünürlük artırma
+                },
+            })
+            .save();
+    }
 
         function downloadWord() {
             const element = document.querySelector('.cv-container');
