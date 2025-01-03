@@ -250,6 +250,11 @@
     references: ["Prof. Dr. Ahmet Doğan"],
     languages: ["Türkçe (Anadil)", "İngilizce (İleri Seviye)"]
   }));
+
+    localStorage.setItem('cvData', JSON.stringify(cvData));
+
+    updateCV(cvData);
+    
   alert('Veri başarıyla kaydedildi!');
 };
 
@@ -264,12 +269,13 @@ function updateCV(cvData) {
   document.getElementById('profile-summary').innerText = cvData.summary || 'Kısaca kendinizi tanıtın...';
 
   if (cvData.photo) {
-    document.getElementById('profile-photo').style.backgroundImage = url('${cvData.photo}');
+    document.getElementById('profile-photo').style.backgroundImage = `url(${cvData.photo})`;
   }
 
+  // Eğitim, iş deneyimi, beceriler, referanslar ve yabancı diller listelerini güncelle
   updateListById('education-list', cvData.education);
-  updateListById('skills-list', cvData.skills);
   updateListById('work-experience-list', cvData.workExperience);
+  updateListById('skills-list', cvData.skills);
   updateListById('references-list', cvData.references);
   updateListById('languages-list', cvData.languages);
 }
@@ -277,7 +283,7 @@ function updateCV(cvData) {
 function updateListById(elementId, data) {
   const list = document.getElementById(elementId);
   if (Array.isArray(data) && data.length > 0) {
-    list.innerHTML = data.map(item => <li>${item}</li>).join('');
+    list.innerHTML = data.map(item => `<li>${item}</li>`).join('');
   } else {
     list.innerHTML = '<li>Bilgi yok.</li>';
   }
