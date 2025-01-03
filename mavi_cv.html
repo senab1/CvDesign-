@@ -253,18 +253,10 @@
       }
 
       updateListById('education-list', cvData.education);
+      updateListById('skills-list', cvData.skills);
       updateListById('work-experience-list', cvData.workExperience);
       
-      function updateListById(listId, items) {
-    const listElement = document.getElementById(listId);
-    listElement.innerHTML = ''; // Mevcut listeyi temizle
-
-    items.forEach(item => {
-        const li = document.createElement('li'); // Yeni <li> öğesi oluştur
-        li.textContent = item; // Liste öğesinin metnini ayarla
-        listElement.appendChild(li); // <ul> içine ekle
-    });
-}
+    
 
 // Örnek kullanım
 const cvData = {
