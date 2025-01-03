@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CV Şablonu</title>
   <style>
-    @page {
+ @page {
       size: A4;
       margin: 0;
     }
@@ -137,6 +137,8 @@
     .download-btn:hover {
       background-color: #1e5a83;
     }
+  
+
   </style>
 </head>
 <body>
@@ -214,14 +216,14 @@
         website: document.getElementById('website').value,
         linkedin: document.getElementById('linkedin').value,
         summary: document.getElementById('summary').value,
-        certificates: document.getElementById('certificates').value,
+        certificates: document.getElementById('certificates').value,  // Sertifikaları al
         education: document.getElementById('education').value,
         workExperience: document.getElementById('workExperience').value,
         skills: document.getElementById('skills').value,
         references: document.getElementById('references').value
       };
 
-      localStorage.setItem('cvData', JSON.stringify(cvData));
+      localStorage.setItem('cvData', JSON.stringify(cvData));  // Veriyi kaydet
       alert('CV başarıyla kaydedildi!');
     }
 
@@ -236,6 +238,7 @@
 
       const certificates = document.getElementById('certificates-list');
       if (cvData.certificates) {
+        // Sertifikalar verisini listele
         certificates.innerHTML = cvData.certificates.split('\n').map(item => `<li>${item}</li>`).join('');
       } else {
         certificates.innerHTML = '<li>Bilgi yok.</li>';
@@ -280,3 +283,5 @@
   </script>
 </body>
 </html>
+
+   
