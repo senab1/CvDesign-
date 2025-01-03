@@ -34,34 +34,6 @@
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
- .sidebar .contact-info {
-    margin-top: 20px;
-    text-align: left; /* Sol hizalama için */
-    width: 100%; /* Mavi alanın dışına taşmaması için */
-    padding: 10px 0; /* Üst ve alt boşluk */
-}
-
-.sidebar .contact-info p {
-    margin: 10px 0; /* Alt boşluk */
-    display: flex; /* İkon ve metni aynı satıra koymak için */
-    align-items: center; /* İkon ve metni ortalamak için */
-    word-wrap: break-word; /* Metin taşmasını önler */
-    overflow-wrap: break-word; /* Metin taşmasını önler */
-}
-
-.sidebar .contact-info i {
-    font-size: 18px; /* İkon boyutu */
-    color: #2980b9; /* İkon rengi */
-    margin-right: 10px; /* İkon ile metin arası boşluk */
-}
-
-.sidebar .contact-info span {
-    display: inline-block; /* Metni kontrol etmek için */
-    color: black; /* Metin rengi */
-    word-wrap: break-word; /* Metin taşmasını önler */
-    overflow-wrap: break-word; /* Metin taşmasını önler */
-}
-
     .sidebar {
       width: 30%;
       background-color: white;
@@ -138,17 +110,15 @@
       font-weight: bold;
     }
 
-    
-  .content .section ul {
-    list-style: disc; /* Madde işareti ekler */
-    margin-left: 20px; /* Soldan boşluk */
-    padding-left: 20px; /* İçeriden boşluk */
-  }
+    .content .section ul {
+      list-style: disc;
+      margin-left: 20px;
+      padding-left: 20px;
+    }
 
-  .content .section ul li {
-    margin-bottom: 5px; /* Liste elemanları arasına boşluk */
-  }
-
+    .content .section ul li {
+      margin-bottom: 5px;
+    }
 
     .download-btn {
       margin: 20px auto;
@@ -183,7 +153,7 @@
       </div>
 
       <div class="contact-info">
-        <h3>İletisim Bilgileri</h3>
+        <h3>İletişim Bilgileri</h3>
         <p><i class="fas fa-phone"></i> <span id="profile-phone">Telefon</span></p>
         <p><i class="fas fa-envelope"></i> <span id="profile-email">E-posta</span></p>
         <p><i class="fas fa-globe"></i> <span id="profile-website">Web Sitesi</span></p>
@@ -198,10 +168,9 @@
       </div>
 
       <div class="section">
-  <h2>Sertifikalar</h2>
-  <ul id="certificates-list"></ul>
-</div>
-
+        <h2>Sertifikalar</h2>
+        <ul id="certificates-list"></ul>
+      </div>
 
       <div class="section">
         <h2>İş Deneyimi</h2>
@@ -222,77 +191,74 @@
 
   <button class="download-btn" onclick="downloadPDF()">PDF Olarak İndir</button>
 
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
-
 
   <script>
     window.onload = function() {
-  const cvData = JSON.parse(localStorage.getItem('cvData'));
-  if (cvData) updateCV(cvData);
-};
+      const cvData = JSON.parse(localStorage.getItem('cvData'));
+      if (cvData) {
+        console.log("CV Data:", cvData);
+        updateCV(cvData);
+      } else {
+        console.log("CV verisi bulunamadı.");
+      }
+    };
 
     function saveCV() {
-  const cvData = {
-    name: document.getElementById('name').value,
-    profession: document.getElementById('profession').value,
-    phone: document.getElementById('phone').value,
-    email: document.getElementById('email').value,
-    website: document.getElementById('website').value,
-    linkedin: document.getElementById('linkedin').value,
-    summary: document.getElementById('summary').value,
-    certificates: document.getElementById('certificates').value, 
-    education: document.getElementById('education').value,
-    workExperience: document.getElementById('workExperience').value,
-    skills: document.getElementById('skills').value,
-    references: document.getElementById('references').value
-  };
+      const cvData = {
+        name: document.getElementById('name').value,
+        profession: document.getElementById('profession').value,
+        phone: document.getElementById('phone').value,
+        email: document.getElementById('email').value,
+        website: document.getElementById('website').value,
+        linkedin: document.getElementById('linkedin').value,
+        summary: document.getElementById('summary').value,
+        certificates: document.getElementById('certificates').value,
+        education: document.getElementById('education').value,
+        workExperience: document.getElementById('workExperience').value,
+        skills: document.getElementById('skills').value,
+        references: document.getElementById('references').value
+      };
 
-  // Verileri localStorage'a kaydediyoruz
-  localStorage.setItem('cvData', JSON.stringify(cvData));
-  alert('CV başarıyla kaydedildi!');
-}
+      localStorage.setItem('cvData', JSON.stringify(cvData));
+      alert('CV başarıyla kaydedildi!');
+    }
 
-window.onload = function() {
-  const cvData = JSON.parse(localStorage.getItem('cvData'));
-  if (cvData) {
-    console.log("CV Data:", cvData);  // Hata ayıklamak için eklenmiştir
-    updateCV(cvData);
-  } else {
-    console.log("CV verisi bulunamadı.");
-  }
-};
+    function updateCV(cvData) {
+      document.getElementById('profile-name').innerText = cvData.name || 'Ad Soyad';
+      document.getElementById('profile-profession').innerText = cvData.profession || 'Meslek';
+      document.getElementById('profile-phone').innerText = cvData.phone || 'Telefon';
+      document.getElementById('profile-email').innerText = cvData.email || 'E-posta';
+      document.getElementById('profile-website').innerText = cvData.website || 'Web Sitesi';
+      document.getElementById('profile-linkedin').innerText = cvData.linkedin || 'LinkedIn';
+      document.getElementById('profile-summary').innerText = cvData.summary || 'Tanıtım Bilgisi';
 
-function updateCV(cvData) {
-  document.getElementById('profile-name').innerText = cvData.name || 'Ad Soyad';
-  document.getElementById('profile-profession').innerText = cvData.profession || 'Meslek';
-  document.getElementById('profile-phone').innerText = cvData.phone || 'Telefon';
-  document.getElementById('profile-email').innerText = cvData.email || 'E-posta';
-  document.getElementById('profile-website').innerText = cvData.website || 'Web Sitesi';
-  document.getElementById('profile-linkedin').innerText = cvData.linkedin || 'LinkedIn';
-  document.getElementById('profile-summary').innerText = cvData.summary || 'Tanıtım Bilgisi';
-  document.getElementById('certificates').innerText=cvData.certificates||'Sertifikalar';
+      const certificates = document.getElementById('certificates-list');
+      if (cvData.certificates) {
+        certificates.innerHTML = cvData.certificates.split('\n').map(item => `<li>${item}</li>`).join('');
+      } else {
+        certificates.innerHTML = '<li>Bilgi yok.</li>';
+      }
 
-  if (cvData.photo) {
-    document.getElementById('profile-photo').style.backgroundImage = `url('${cvData.photo}')`;
-  }
+      if (cvData.photo) {
+        document.getElementById('profile-photo').style.backgroundImage = `url('${cvData.photo}')`;
+      }
 
-  updateList('education-list', cvData.education);
-  updateList('work-experience-list', cvData.workExperience);
-  updateList('skills-list', cvData.skills);
-  updateList('references-list', cvData.references);
-}
+      updateList('education-list', cvData.education);
+      updateList('work-experience-list', cvData.workExperience);
+      updateList('skills-list', cvData.skills);
+      updateList('references-list', cvData.references);
+    }
 
-function updateList(elementId, data) {
-  const list = document.getElementById(elementId);
-  if (data) {
-    list.innerHTML = data.split('\n').map(item => `<li>${item}</li>`).join('');
-  } else {
-    list.innerHTML = '<li>Bilgi yok.</li>';
-  }
-}
-
-
+    function updateList(elementId, data) {
+      const list = document.getElementById(elementId);
+      if (data) {
+        list.innerHTML = data.split('\n').map(item => `<li>${item}</li>`).join('');
+      } else {
+        list.innerHTML = '<li>Bilgi yok.</li>';
+      }
+    }
 
     function downloadPDF() {
       const element = document.querySelector('.container');
