@@ -306,7 +306,7 @@
 
         function downloadWord() {
     const element = document.querySelector('.cv-container');
-    const content = `
+    let content = `
         <html xmlns:o='urn:schemas-microsoft-com:office:office' 
               xmlns:w='urn:schemas-microsoft-com:office:word' 
               xmlns='http://www.w3.org/TR/REC-html40'>
@@ -352,15 +352,18 @@
                     padding-bottom: 2px;
                 }
 
+                /* Liste ve madde işaretleri için tüm stilleri kaldırıyoruz */
                 ul, ol {
                     list-style-type: none;  /* Madde işaretlerini ve numaralı listeyi kaldırıyoruz */
                     padding-left: 0;  /* Liste başlarındaki girintiyi kaldırıyoruz */
                     margin: 0;
                 }
 
+                /* Liste elemanlarının normal metin gibi görünmesini sağlıyoruz */
                 ul li, ol li {
                     margin-bottom: 5px;
                     font-size: 9pt;
+                    padding-left: 0;
                 }
 
                 @page {
@@ -373,6 +376,12 @@
         </body>
         </html>`;
 
+    // Madde işaretlerini kaldırmak için HTML'deki <ul> ve <ol> elemanlarını düz metne çeviriyorum
+    content = content.replace(/<ul[^>]*>/g, '').replace(/<\/ul>/g, '').replace(/<ol[^>]*>/g, '').replace(/<\/ol>/g, '');
+
+    // <li> etiketlerini düz metne dönüştür
+    content = content.replace(/<li>/g, '').replace(/<\/li>/g, '<br>'); 
+
     const blob = new Blob(['\ufeff', content], { type: 'application/msword' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -382,6 +391,7 @@
     a.click();
     document.body.removeChild(a);
 }
+
 
     </script>
 </body>
