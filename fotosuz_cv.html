@@ -253,8 +253,12 @@
                 document.getElementById('work-experience').innerHTML = workExperience ? workExperience.split(',').map(exp => `<li>${exp}</li>`).join('') : "<li>İş deneyimi bilgisi bulunmamaktadır.</li>";
 
                 document.getElementById('education').innerHTML = (cvData.education || "").split(',').map(edu => `<li>${edu}</li>`).join('');
+
                 const skills = cvData.skills || "";
-                document.getElementById('skills').innerHTML = skills.split(',').map(skill => `<p>${skill}</p>`).join('') || "<p>Beceriler bilgisi bulunmamaktadır.</p>";
+document.getElementById('skills').innerHTML = skills
+    .split('\n') // Satır başına göre ayırır
+    .map(skill => `<li>${skill.trim()}</li>`) // Liste öğeleri oluşturur
+    .join('') || "<li>Beceriler bilgisi bulunmamaktadır.</li>";
 
                 document.getElementById('certifications').innerHTML = (cvData.certifications || "").split(',').map(cert => `<li>${cert}</li>`).join('');
                 document.getElementById('languages').innerHTML = (cvData.languages || "").split(',').map(lang => `<li>${lang}</li>`).join('');
