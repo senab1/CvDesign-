@@ -86,7 +86,8 @@
         }
 
         ul {
-            list-style: none;
+            list-style-type: disc; /* Madde işareti ekledik */
+            padding-left: 20px;
         }
 
         ul li {
@@ -113,6 +114,17 @@
 
             h1, h2, h3, p, ul {
                 font-size: 14px;
+            }
+
+            ul li {
+                font-size: 12pt; /* Font boyutunu büyüttük */
+            }
+
+            /* Sayfayı tek sayfada tutmak için ayar */
+            .cv-container {
+                max-width: 100%;
+                page-break-before: auto;
+                transform: scale(0.9); /* Sayfa içerik boyutunu küçültme */
             }
         }
 
@@ -352,8 +364,8 @@
                         }
 
                         ul {
-                            list-style: none;
-                            padding: 0;
+                            list-style: disc;
+                            padding-left: 20px;
                             margin: 0;
                         }
 
