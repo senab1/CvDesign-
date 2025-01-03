@@ -249,13 +249,15 @@ function updateCV(cvData) {
   document.getElementById('profile-website').innerText = cvData.website || 'Web Sitesi';
   document.getElementById('profile-linkedin').innerText = cvData.linkedin || 'LinkedIn';
   document.getElementById('profile-summary').innerText = cvData.summary || 'Kısaca kendinizi tanıtın...';
+  document.getElementById('sidebar-skills').innerHTML = mapToListItems(cvData.skills || "");
+
 
   if (cvData.photo) {
     document.getElementById('profile-photo').style.backgroundImage = `url('${cvData.photo}')`;
   }
 
   updateListById('education-list', cvData.education);
-  updateListById('skills-list', cvData.skills);
+  
   updateListById('work-experience-list', cvData.workExperience);
   updateListById('references-list', cvData.references);
   updateListById('languages-list', cvData.languages);
