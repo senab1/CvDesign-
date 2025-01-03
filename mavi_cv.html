@@ -253,6 +253,16 @@
   alert('CV başarıyla kaydedildi!');
 }
 
+window.onload = function() {
+  const cvData = JSON.parse(localStorage.getItem('cvData'));
+  if (cvData) {
+    console.log("CV Data:", cvData);  // Hata ayıklamak için eklenmiştir
+    updateCV(cvData);
+  } else {
+    console.log("CV verisi bulunamadı.");
+  }
+};
+
 function updateCV(cvData) {
   document.getElementById('profile-name').innerText = cvData.name || 'Ad Soyad';
   document.getElementById('profile-profession').innerText = cvData.profession || 'Meslek';
@@ -281,6 +291,7 @@ function updateList(elementId, data) {
     list.innerHTML = '<li>Bilgi yok.</li>';
   }
 }
+
 
 
     function downloadPDF() {
