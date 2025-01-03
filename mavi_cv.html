@@ -44,20 +44,32 @@
     }
 
  .sidebar .contact-info {
-      margin-top: 20px;
-      text-align: center;
-    }
+    margin-top: 20px;
+    text-align: left; /* Sol hizalama için */
+    width: 100%; /* Mavi alanın dışına taşmaması için */
+    padding: 10px 0; /* Üst ve alt boşluk */
+}
 
-    .sidebar .contact-info p {
-      margin: 5px 0;
-      display: block;
-    }
+.sidebar .contact-info p {
+    margin: 10px 0; /* Alt boşluk */
+    display: flex; /* İkon ve metni aynı satıra koymak için */
+    align-items: center; /* İkon ve metni ortalamak için */
+    word-wrap: break-word; /* Metin taşmasını önler */
+    overflow-wrap: break-word; /* Metin taşmasını önler */
+}
 
-    .sidebar .contact-info i {
-      margin-right: 10px;
-      font-size: 18px;
-      color: #2980b9;
-    }
+.sidebar .contact-info i {
+    font-size: 18px; /* İkon boyutu */
+    color: #2980b9; /* İkon rengi */
+    margin-right: 10px; /* İkon ile metin arası boşluk */
+}
+
+.sidebar .contact-info span {
+    display: inline-block; /* Metni kontrol etmek için */
+    color: black; /* Metin rengi */
+    word-wrap: break-word; /* Metin taşmasını önler */
+    overflow-wrap: break-word; /* Metin taşmasını önler */
+}
 
     .sidebar {
       width: 30%;
