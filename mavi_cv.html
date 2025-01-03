@@ -2,14 +2,14 @@
 <html lang="tr">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V61QV2LZ8Q"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-V61QV2LZ8Q');
-  </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-V61QV2LZ8Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-V61QV2LZ8Q');
+</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CV Şablonu</title>
@@ -25,27 +25,63 @@
     }
     body {
       font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
       background-color: #f4f4f4;
     }
+
     .container {
       display: flex;
-      width: 210mm;
-      height: 297mm;
+      flex-wrap: nowrap;
+      width: 210mm; /* A4 genişliği */
+      height: 297mm; /* A4 yüksekliği */
       margin: 0 auto;
       padding: 0;
       background-color: #ffffff;
       border-radius: 10px;
+      overflow: hidden;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
+
+ .sidebar .contact-info {
+    margin-top: 20px;
+    text-align: left; /* Sol hizalama için */
+    width: 100%; /* Mavi alanın dışına taşmaması için */
+    padding: 10px 0; /* Üst ve alt boşluk */
+}
+
+.sidebar .contact-info p {
+    margin: 10px 0; /* Alt boşluk */
+    display: flex; /* İkon ve metni aynı satıra koymak için */
+    align-items: center; /* İkon ve metni ortalamak için */
+    word-wrap: break-word; /* Metin taşmasını önler */
+    overflow-wrap: break-word; /* Metin taşmasını önler */
+}
+
+.sidebar .contact-info i {
+    font-size: 18px; /* İkon boyutu */
+    color: #2980b9; /* İkon rengi */
+    margin-right: 10px; /* İkon ile metin arası boşluk */
+}
+
+.sidebar .contact-info span {
+    display: inline-block; /* Metni kontrol etmek için */
+    color: black; /* Metin rengi */
+    word-wrap: break-word; /* Metin taşmasını önler */
+    overflow-wrap: break-word; /* Metin taşmasını önler */
+}
+
     .sidebar {
       width: 30%;
       background-color: white;
+      color: black;
       padding: 20px;
-      border-right: 2px solid #2980b9;
       display: flex;
       flex-direction: column;
       align-items: center;
+      border-right: 2px solid #2980b9;
     }
+
     .sidebar .profile-photo {
       width: 150px;
       height: 150px;
@@ -55,47 +91,77 @@
       background-position: center;
       margin-bottom: 20px;
     }
-    .sidebar h1, .sidebar h2 {
+
+    .sidebar h1 {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+
+    .sidebar h2 {
+      font-size: 16px;
+      font-weight: normal;
+      margin: 5px 0;
+    }
+
+    .about {
+      margin-top: 20px;
+      text-align: center;
+      padding: 20px 0;
+      border-top: 3px solid #2980b9;
+      border-bottom: 3px solid #2980b9;
+    }
+
+    .sidebar .contact-info {
+      margin-top: 20px;
       text-align: center;
     }
-    .sidebar .contact-info {
-      text-align: left;
-      margin-top: 20px;
-    }
+
     .sidebar .contact-info p {
-      margin: 10px 0;
-      display: flex;
-      align-items: center;
+      margin: 5px 0;
     }
+
     .sidebar .contact-info i {
+      margin-right: 10px;
       font-size: 18px;
       color: #2980b9;
-      margin-right: 10px;
     }
+
     .content {
       width: 70%;
       padding: 30px;
       background-color: #1e5a83;
       color: white;
+      display: flex;
+      flex-direction: column;
     }
-    .section {
+
+    .content .section {
       margin-bottom: 30px;
     }
-    .section h2 {
+
+    .content .section h2 {
       font-size: 18px;
       border-bottom: 2px solid white;
       padding-bottom: 5px;
       margin-bottom: 10px;
+      font-weight: bold;
     }
-    .section ul {
-      list-style: disc;
-      margin-left: 20px;
-    }
-    .section ul li {
-      margin-bottom: 5px;
-    }
+
+    
+  .content .section ul {
+    list-style: disc; /* Madde işareti ekler */
+    margin-left: 20px; /* Soldan boşluk */
+    padding-left: 20px; /* İçeriden boşluk */
+  }
+
+  .content .section ul li {
+    margin-bottom: 5px; /* Liste elemanları arasına boşluk */
+  }
+
+
     .download-btn {
       margin: 20px auto;
+      display: block;
       padding: 10px 20px;
       background-color: #2980b9;
       color: white;
@@ -103,12 +169,14 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      font-size: 16px;
+      text-decoration: none;
     }
+
     .download-btn:hover {
       background-color: #1e5a83;
     }
   </style>
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -143,16 +211,18 @@
         <ul id="work-experience-list"></ul>
       </div>
 
-      <div class="section">
+    <div class="section">
         <h2>Beceriler</h2>
         <ul id="skills-list"></ul>
       </div>
+
 
       <div class="section">
         <h2>Referanslar</h2>
         <ul id="references-list"></ul>
       </div>
 
+      <!-- Yeni Eklenen Yabancı Diller Bölümü -->
       <div class="section">
         <h2>Yabancı Diller</h2>
         <ul id="languages-list"></ul>
@@ -164,7 +234,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
   <script>
-    window.onload = function () {
+  window.onload = function () {
   localStorage.setItem('cvData', JSON.stringify({
     name: "Ahmet Yılmaz",
     profession: "Yazılım Geliştirici",
@@ -183,38 +253,35 @@
   alert('Veri başarıyla kaydedildi!');
 };
 
-  
 
-    function updateCV(cvData) {
-      // Profil Bilgileri Güncelleme
-      document.getElementById('profile-name').innerText = cvData.name || 'Ad Soyad';
-      document.getElementById('profile-profession').innerText = cvData.profession || 'Meslek';
-      document.getElementById('profile-phone').innerText = cvData.phone || 'Telefon';
-      document.getElementById('profile-email').innerText = cvData.email || 'E-posta';
-      document.getElementById('profile-website').innerText = cvData.website || 'Web Sitesi';
-      document.getElementById('profile-linkedin').innerText = cvData.linkedin || 'LinkedIn';
-      document.getElementById('profile-summary').innerText = cvData.summary || 'Kısaca kendinizi tanıtın...';
+function updateCV(cvData) {
+  document.getElementById('profile-name').innerText = cvData.name || 'Ad Soyad';
+  document.getElementById('profile-profession').innerText = cvData.profession || 'Meslek';
+  document.getElementById('profile-phone').innerText = cvData.phone || 'Telefon';
+  document.getElementById('profile-email').innerText = cvData.email || 'E-posta';
+  document.getElementById('profile-website').innerText = cvData.website || 'Web Sitesi';
+  document.getElementById('profile-linkedin').innerText = cvData.linkedin || 'LinkedIn';
+  document.getElementById('profile-summary').innerText = cvData.summary || 'Kısaca kendinizi tanıtın...';
 
-      if (cvData.photo) {
-        document.getElementById('profile-photo').style.backgroundImage = `url('${cvData.photo}')`;
-      }
+  if (cvData.photo) {
+    document.getElementById('profile-photo').style.backgroundImage = url('${cvData.photo}');
+  }
 
-      // Eğitim, İş Deneyimi, Beceriler, Referanslar ve Yabancı Diller
-      updateListById('education-list', cvData.education);
-      updateListById('work-experience-list', cvData.workExperience);
-      updateListById('skills-list', cvData.skills);
-      updateListById('references-list', cvData.references);
-      updateListById('languages-list', cvData.languages);
-    }
+  updateListById('education-list', cvData.education);
+  updateListById('skills-list', cvData.skills);
+  updateListById('work-experience-list', cvData.workExperience);
+  updateListById('references-list', cvData.references);
+  updateListById('languages-list', cvData.languages);
+}
 
-    function updateListById(elementId, data) {
-      const list = document.getElementById(elementId);
-      if (Array.isArray(data) && data.length > 0) {
-        list.innerHTML = data.map(item => `<li>${item}</li>`).join('');
-      } else {
-        list.innerHTML = '<li>Bilgi yok.</li>';
-      }
-    }
+function updateListById(elementId, data) {
+  const list = document.getElementById(elementId);
+  if (Array.isArray(data) && data.length > 0) {
+    list.innerHTML = data.map(item => <li>${item}</li>).join('');
+  } else {
+    list.innerHTML = '<li>Bilgi yok.</li>';
+  }
+}
 
     function downloadPDF() {
       const element = document.querySelector('.container');
