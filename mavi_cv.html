@@ -228,34 +228,39 @@
 
   <script>
     window.onload = function() {
-      const cvData = JSON.parse(localStorage.getItem('cvData'));
-      if (cvData) updateCV(cvData);
-    };
+  const cvData = JSON.parse(localStorage.getItem('cvData'));
+  if (cvData) updateCV(cvData);
+};
 
-    function updateCV(cvData) {
-      document.getElementById('profile-name').innerText = cvData.name || 'Ad Soyad';
-      document.getElementById('profile-profession').innerText = cvData.profession || 'Meslek';
-      document.getElementById('profile-phone').innerText = cvData.phone || 'Telefon';
-      document.getElementById('profile-email').innerText = cvData.email || 'E-posta';
-      document.getElementById('profile-website').innerText = cvData.website || 'Web Sitesi';
-      document.getElementById('profile-linkedin').innerText = cvData.linkedin || 'LinkedIn';
-      document.getElementById('profile-summary').innerText = cvData.summary || 'Tanıtım Bilgisi';
+function updateCV(cvData) {
+  document.getElementById('profile-name').innerText = cvData.name || 'Ad Soyad';
+  document.getElementById('profile-profession').innerText = cvData.profession || 'Meslek';
+  document.getElementById('profile-phone').innerText = cvData.phone || 'Telefon';
+  document.getElementById('profile-email').innerText = cvData.email || 'E-posta';
+  document.getElementById('profile-website').innerText = cvData.website || 'Web Sitesi';
+  document.getElementById('profile-linkedin').innerText = cvData.linkedin || 'LinkedIn';
+  document.getElementById('profile-summary').innerText = cvData.summary || 'Tanıtım Bilgisi';
 
-      if (cvData.photo) {
-        document.getElementById('profile-photo').style.backgroundImage = `url('${cvData.photo}')`;
-      }
+  if (cvData.photo) {
+    document.getElementById('profile-photo').style.backgroundImage = `url('${cvData.photo}')`;
+  }
 
-      updateList('education-list', cvData.education);
-      updateList('work-experience-list', cvData.workExperience);
-      updateList('skills-list', cvData.skills);
-      updateList('certificates-list', cvData.certificates);
-      updateList('references-list', cvData.references);
-    }
+  updateList('education-list', cvData.education);
+  updateList('work-experience-list', cvData.workExperience);
+  updateList('skills-list', cvData.skills);
+  updateList('certificates-list', cvData.certificates); // Sertifikalar
+  updateList('references-list', cvData.references);
+}
 
-    function updateList(elementId, data) {
-      const list = document.getElementById(elementId);
-      list.innerHTML = data ? data.split('\n').map(item => `<li>${item}</li>`).join('') : '<li>Bilgi yok.</li>';
-    }
+function updateList(elementId, data) {
+  const list = document.getElementById(elementId);
+  if (data) {
+    list.innerHTML = data.split('\n').map(item => `<li>${item}</li>`).join('');
+  } else {
+    list.innerHTML = '<li>Bilgi yok.</li>';
+  }
+}
+
 
     function downloadPDF() {
       const element = document.querySelector('.container');
