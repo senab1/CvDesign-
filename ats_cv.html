@@ -353,29 +353,47 @@ document.getElementById('skills').innerHTML = skills
         }
 
        
-    function downloadPDF() {
-    const element = document.querySelector('.cv-container'); // PDF'yi almak istediğiniz öğe
+   function downloadPDF() {
+    const element = document.querySelector('.cv-container');
+    
+    // Dinamik olarak font boyutunu ve sayfa içeriklerini küçültme
+    const pageHeight = 297; // A4 sayfa boyutu (mm cinsinden)
+    const pageWidth = 210;
+    
+    const contentHeight = element.scrollHeight; // İçeriğin yüksekliği
+    const contentWidth = element.scrollWidth; // İçeriğin genişliği
+
+    // İçeriğin sayfaya sığması için font boyutunu ayarlama
+    let scaleFactor = 1;
+    if (contentHeight > pageHeight) {
+        scaleFactor = pageHeight / contentHeight;
+    }
+
+    if (contentWidth > pageWidth) {
+        scaleFactor = Math.min(scaleFactor, pageWidth / contentWidth);
+    }
+
     html2pdf()
         .from(element)
         .set({
-            margin: 0, // Kenar boşluklarını sıfırlıyoruz
-            pageSize: 'A4', // Sayfa boyutunu A4 olarak belirliyoruz
+            margin: 0,
+            pageSize: 'A4',
             html2canvas: {
-                scale: 4, // Çözünürlüğü arttırıyoruz, daha net bir çıktı için
+                scale: 4, // Çözünürlüğü artırma
                 letterRendering: true
             },
             jsPDF: { 
                 unit: 'mm', 
                 format: 'a4', 
                 orientation: 'portrait',
-                compress: true
+                compress: true,
+                scaleFactor: scaleFactor
             }
         })
         .save('cv.pdf');
 }
 
-
-       function downloadWord() {
+function downloadWord() {
     const element = document.querySelector('.cv-container');
     const content = `
         <html xmlns:o='urn:schemas-microsoft-com:office:office' 
@@ -393,19 +411,22 @@ document.getElementById('skills').innerHTML = skills
                     padding: 0;
                     width: 100%;
                     height: 100%;
+                    page-break-before: always;
                 }
                 .cv-container {
                     width: 100%;
                     margin: 0;
                     padding: 0;
                     box-sizing: border-box;
+                    transform: scale(0.9); /* İçeriği küçültme */
+                    page-break-after: always;
                 }
                 h1, h2, h3 {
                     text-align: center;
                     margin-bottom: 5px;
                 }
                 h1 {
-                    font-size: 1.0em; /* Başlıkları küçültüyoruz */
+                    font-size: 1.0em;
                 }
                 h2 {
                     font-size: 0.9em;
@@ -421,7 +442,7 @@ document.getElementById('skills').innerHTML = skills
                 }
                 ul li {
                     margin-bottom: 5px;
-                    font-size: 8pt; /* Liste öğeleri de daha küçük */
+                    font-size: 8pt;
                 }
             </style>
         </head>
@@ -439,7 +460,6 @@ document.getElementById('skills').innerHTML = skills
     a.click();
     document.body.removeChild(a);
 }
-
 
     </script>
 </body>
