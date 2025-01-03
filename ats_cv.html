@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-V61QV2LZ8Q"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-V61QV2LZ8Q');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV Örneği</title>
@@ -103,45 +94,33 @@
             font-size: 0.9em;
         }
 
-            @media print {
-        body {
-            margin: 0;
-            padding: 0;
-            width: 210mm;
-            height: 297mm;
-        }
-
-        .cv-container {
-            margin: auto;
-            width: 190mm; /* A4 boyutu için genişlik */
-            height: auto; /* Otomatik yükseklik */
-            padding: 20mm; /* Kenar boşlukları */
-            box-shadow: none;
-            page-break-after: always; /* Sayfa sonu ayırıcı */
-        }
-
-        h1, h2, h3, p, ul {
-            font-size: 14px;
-        }
-    }
-
-    @media screen {
-        .cv-container {
-            max-width: 800px;
-        }
-    }
-
-            .contact-info p {
-                font-size: 0.8em;
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+                width: 210mm;
+                height: 297mm;
             }
 
-            .section h3 {
-                font-size: 1em;
+            .cv-container {
+                margin: auto;
+                width: 190mm; /* A4 boyutu için genişlik */
+                height: auto; /* Otomatik yükseklik */
+                padding: 20mm; /* Kenar boşlukları */
+                box-shadow: none;
+                page-break-after: always; /* Sayfa sonu ayırıcı */
             }
 
-            ul li {
-                font-size: 0.8em;
+            h1, h2, h3, p, ul {
+                font-size: 14px;
             }
+        }
+
+        .btn-container {
+            display: block;
+            gap: 20px;
+            margin-top: 20px;
+            text-align: center;
         }
 
         /* Buton Stil */
@@ -196,32 +175,10 @@
             background-color: #1f8c4d;
         }
 
-        .btn-container {
-            display: block;
-            
-            gap: 20px;
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        /* Beceriler ve Sertifikalar için ortak stil */
-ul {
-    padding: 0;
-    margin:0;
-    list-style: none;;
-}
-
-ul li {
-    margin-bottom: 4px;
-    font-size: 0.9em;
-    line-height: 1.0;
-}
-
     </style>
 </head>
 <body>
     <div class="cv-container" id="cv-container">
-        <!-- CV Şablonu -->
         <h1 id="name">AD SOYAD</h1>
         <h2 id="profession">Unvan</h2>
         <div class="contact-info">
@@ -248,9 +205,7 @@ ul li {
         </div>
         <div class="section">
             <h3>Eğitim Bilgisi</h3>
-            <ul id="education">
-                <!-- Eğitim bilgileri buraya gelecek -->
-            </ul>
+            <ul id="education"></ul>
         </div>
         <div class="section">
             <h3>Kurslar ve Sertifikalar</h3>
@@ -281,213 +236,150 @@ ul li {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
     
     <script>
-        // Sayfa yüklendiğinde veriyi localStorage'tan alıp şablona yansıt
-       // Sayfa yüklendiğinde veriyi localStorage'tan alıp şablona yansıt
-// Sayfa yüklendiğinde veriyi localStorage'tan alıp şablona yansıt
-// Sayfa yüklendiğinde veriyi localStorage'tan alıp şablona yansıt
-// Sayfa yüklendiğinde veriyi localStorage'tan alıp şablona yansıt
-window.onload = function() {
-    const cvData = JSON.parse(localStorage.getItem('cvData'));
-    if (cvData) {
-        document.getElementById('name').textContent = cvData.name || 'AD SOYAD';
-        document.getElementById('profession').textContent = cvData.profession || 'Unvan';
-        document.getElementById('phone').textContent = cvData.phone || 'Telefon';
-        document.getElementById('email').textContent = cvData.email || 'E-posta';
-        document.getElementById('website').textContent = cvData.website || 'Web Sitesi';
-        document.getElementById('summary').textContent = cvData.summary || 'Kısa bir açıklama ekleyiniz...';
+        window.onload = function() {
+            const cvData = JSON.parse(localStorage.getItem('cvData'));
+            if (cvData) {
+                document.getElementById('name').textContent = cvData.name || 'AD SOYAD';
+                document.getElementById('profession').textContent = cvData.profession || 'Unvan';
+                document.getElementById('phone').textContent = cvData.phone || 'Telefon';
+                document.getElementById('email').textContent = cvData.email || 'E-posta';
+                document.getElementById('website').textContent = cvData.website || 'Web Sitesi';
+                document.getElementById('summary').textContent = cvData.summary || 'Kısa bir açıklama ekleyiniz...';
 
-    const skills = cvData.skills || ""; 
-document.getElementById('skills').innerHTML = skills
-    .split('\n') // Satır sonlarına göre ayırır
-    .map(skill => `<li>${skill.trim()}</li>`) // Liste öğesi oluşturur
-    .join('') || "<li>Beceri bilgisi bulunmamaktadır.</li>";
+                const skills = cvData.skills || ""; 
+                document.getElementById('skills').innerHTML = skills
+                    .split('\n')
+                    .map(skill => `<li>${skill.trim()}</li>`)
+                    .join('') || "<li>Beceri bilgisi bulunmamaktadır.</li>";
 
+                const education = cvData.education || "";
+                document.getElementById('education').innerHTML = education.split(',').map(edu => `<li>${edu.trim()}</li>`).join('');
 
+                const workExperience = cvData.workExperience || "";
+                if (workExperience) {
+                    document.getElementById('work-experience').innerHTML = workExperience.split(',').map(exp => `<li>${exp.trim()}</li>`).join('');
+                } else {
+                    document.getElementById('work-experience').innerHTML = "<li>İş deneyimi bilgisi bulunmamaktadır.</li>";
+                }
 
-        // Eğitim bilgileri
-        const education = cvData.education || "";
-        document.getElementById('education').innerHTML = education.split(',').map(edu => `<li>${edu.trim()}</li>`).join('');
+                const certifications = cvData.certifications || "";
+                document.getElementById('certifications').innerHTML = certifications.split(',').map(cert => `<li>${cert.trim()}</li>`).join('');
 
-        // İş deneyimi
-        const workExperience = cvData.workExperience || "";
-        if (workExperience) {
-            document.getElementById('work-experience').innerHTML = workExperience.split(',').map(exp => `<li>${exp.trim()}</li>`).join('');
-        } else {
-            document.getElementById('work-experience').innerHTML = "<li>İş deneyimi bilgisi bulunmamaktadır.</li>";
-        }
-
-        // Sertifikalar
-        const certifications = cvData.certifications || "";
-        document.getElementById('certifications').innerHTML = certifications.split(',').map(cert => `<li>${cert.trim()}</li>`).join('');
-
-        // Yabancı Diller
-        document.getElementById('languages').innerHTML = cvData.languages ? cvData.languages.split('\n').map(item => `<li>${item}</li>`).join('') : '<li>Yabancı dil bilgisi bulunmamaktadır.</li>';
-
-        // Referanslar
-        document.getElementById('references').innerHTML = cvData.references ? cvData.references.split('\n').map(item => `<li>${item}</li>`).join('') : '<li>Referans bilgisi bulunmamaktadır.</li>';
-    }
-};
-
-
-
-
-        // Verileri formdan alıp localStorage'a kaydet
-        function saveCVData() {
-            const cvData = {
-                name: document.getElementById('form-name').value,
-                profession: document.getElementById('form-profession').value,
-                phone: document.getElementById('form-phone').value,
-                email: document.getElementById('form-email').value,
-                website: document.getElementById('form-website').value,
-                summary: document.getElementById('form-summary').value,
-                skills: document.getElementById('form-skills').value,
-                workExperience: document.getElementById('form-work-experience').value,
-                education: document.getElementById('form-education').value,
-                certifications: document.getElementById('form-certifications').value,
-                languages: document.getElementById('form-languages').value,
-                references: document.getElementById('form-references').value
-            };
-
-            localStorage.setItem('cvData', JSON.stringify(cvData));
-            alert('Veriler kaydedildi.');
-        }
-
-       
-   function downloadPDF() {
-    const element = document.querySelector('.cv-container');
-    
-    // Dinamik olarak font boyutunu ve sayfa içeriklerini küçültme
-    const pageHeight = 297; // A4 sayfa boyutu (mm cinsinden)
-    const pageWidth = 210;
-    
-    const contentHeight = element.scrollHeight; // İçeriğin yüksekliği
-    const contentWidth = element.scrollWidth; // İçeriğin genişliği
-
-    // İçeriğin sayfaya sığması için font boyutunu ayarlama
-    let scaleFactor = 1;
-    if (contentHeight > pageHeight) {
-        scaleFactor = pageHeight / contentHeight;
-    }
-
-    if (contentWidth > pageWidth) {
-        scaleFactor = Math.min(scaleFactor, pageWidth / contentWidth);
-    }
-
-    // Ayarlamaları yaparak boşlukları kontrol et
-    html2pdf()
-        .from(element)
-        .set({
-            margin: 10, // Sayfa kenar boşluklarını ayarlayın
-            pageSize: 'A4',
-            html2canvas: {
-                scale: 4, // Çözünürlüğü artırma
-                letterRendering: true
-            },
-            jsPDF: {
-                unit: 'mm',
-                format: 'a4',
-                orientation: 'portrait',
-                compress: true,
-                scaleFactor: scaleFactor,
-                // PDF sayfasında başlıklar arasındaki mesafeyi kısaltma
-                // Ana içerik ve başlıklar arasındaki mesafeyi ayarlama
-                lineHeight: 1.2,  // Metin arası mesafe (daha sıkışık bir görünüm)
-                margin: [15, 10, 20, 10], // Sayfa kenar boşluklarını daha rahat ayarlayın
+                document.getElementById('languages').innerHTML = cvData.languages ? cvData.languages.split('\n').map(item => `<li>${item}</li>`).join('') : '<li>Yabancı dil bilgisi bulunmamaktadır.</li>';
+                document.getElementById('references').innerHTML = cvData.references ? cvData.references.split('\n').map(item => `<li>${item}</li>`).join('') : '<li>Referans bilgisi bulunmamaktadır.</li>';
             }
-        })
-        .save('cv.pdf');
-}
+        };
 
+        function downloadPDF() {
+            const element = document.querySelector('.cv-container');
+            const contentHeight = element.scrollHeight;
+            const contentWidth = element.scrollWidth;
 
-function downloadWord() {
-    const element = document.querySelector('.cv-container');
-    const content = `
-        <html xmlns:o='urn:schemas-microsoft-com:office:office' 
-              xmlns:w='urn:schemas-microsoft-com:office:word' 
-              xmlns='http://www.w3.org/TR/REC-html40'>
-        <head>
-            <meta charset='utf-8'>
-            <title>CV</title>
-            <style>
-                /* Sayfa Boyutları ve Margin */
-                body {
-                    font-family: Arial, sans-serif;
-                    font-size: 8pt; /* Yazı boyutunu daha küçük yaptık */
-                    line-height: 1.0;
-                    margin: 0;
-                    padding: 0;
-                    width: 100%;
-                    height: 100%;
-                    page-break-before: always;
-                }
-                
-                /* İçeriği tek sayfada sıkıştırma */
-                .cv-container {
-                    width: 100%;
-                    height: 100%;
-                    margin: 0;
-                    padding: 0;
-                    box-sizing: border-box;
-                    transform: scale(0.7); /* İçeriği %70 oranında küçültüyoruz */
-                    page-break-before: auto;
-                }
+            let scaleFactor = 1;
+            const pageHeight = 297;
+            const pageWidth = 210;
 
-                /* Başlıklar */
-                h1, h2, h3 {
-                    text-align: center;
-                    margin-bottom: 5px;
-                }
+            if (contentHeight > pageHeight) scaleFactor = pageHeight / contentHeight;
+            if (contentWidth > pageWidth) scaleFactor = Math.min(scaleFactor, pageWidth / contentWidth);
 
-                h1 {
-                    font-size: 1.0em; /* Başlık boyutunu küçültüyoruz */
-                }
+            html2pdf()
+                .from(element)
+                .set({
+                    margin: 10,
+                    pageSize: 'A4',
+                    html2canvas: {
+                        scale: 4,
+                        letterRendering: true
+                    },
+                    jsPDF: {
+                        unit: 'mm',
+                        format: 'a4',
+                        orientation: 'portrait',
+                        compress: true,
+                        scaleFactor: scaleFactor,
+                        margin: [15, 10, 20, 10]
+                    }
+                })
+                .save('cv.pdf');
+        }
 
-                h2 {
-                    font-size: 0.9em;
-                }
+        function downloadWord() {
+            const element = document.querySelector('.cv-container');
+            const content = `
+                <html xmlns:o='urn:schemas-microsoft-com:office:office' 
+                      xmlns:w='urn:schemas-microsoft-com:office:word' 
+                      xmlns='http://www.w3.org/TR/REC-html40'>
+                <head>
+                    <meta charset='utf-8'>
+                    <title>CV</title>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            font-size: 8pt;
+                            line-height: 1.0;
+                            margin: 0;
+                            padding: 0;
+                            width: 100%;
+                            height: 100%;
+                        }
 
-                h3 {
-                    font-size: 0.8em;
-                    border-bottom: 1px solid #333;
-                    padding-bottom: 2px;
-                }
+                        .cv-container {
+                            width: 100%;
+                            margin: 0;
+                            padding: 0;
+                            box-sizing: border-box;
+                            transform: scale(0.7);
+                            page-break-before: auto;
+                        }
 
-                /* Liste stilini sıfırlama */
-                ul {
-                    list-style: none;
-                    padding: 0;
-                    margin: 0;
-                }
+                        h1, h2, h3 {
+                            text-align: center;
+                        }
 
-                ul li {
-                    margin-bottom: 5px;
-                    font-size: 8pt; /* Beceriler ve diğer metin için küçük yazı boyutu */
-                }
+                        h1 {
+                            font-size: 1.0em;
+                        }
 
-                /* Sayfa kenar boşluklarını azaltma */
-                @page {
-                    margin: 0.5cm; /* Sayfa kenar boşluklarını küçültüyoruz */
-                }
-                
-            </style>
-        </head>
-        <body>
-            ${element.innerHTML}
-        </body>
-        </html>`;
+                        h2 {
+                            font-size: 0.9em;
+                        }
 
-    const blob = new Blob(['\ufeff', content], { type: 'application/msword' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'cv.doc';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-}
+                        h3 {
+                            font-size: 0.8em;
+                            border-bottom: 1px solid #333;
+                            padding-bottom: 2px;
+                        }
 
+                        ul {
+                            list-style: none;
+                            padding: 0;
+                            margin: 0;
+                        }
 
+                        ul li {
+                            margin-bottom: 5px;
+                            font-size: 8pt;
+                        }
 
+                        @page {
+                            margin: 0.5cm;
+                        }
+                    </style>
+                </head>
+                <body>
+                    ${element.innerHTML}
+                </body>
+                </html>`;
+
+            const blob = new Blob(['\ufeff', content], { type: 'application/msword' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'cv.doc';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
     </script>
 </body>
 </html>
