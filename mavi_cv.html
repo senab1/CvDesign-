@@ -2,14 +2,13 @@
 <html lang="tr">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-V61QV2LZ8Q"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-V61QV2LZ8Q');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V61QV2LZ8Q"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-V61QV2LZ8Q');
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CV Şablonu</title>
@@ -211,18 +210,16 @@
         <ul id="work-experience-list"></ul>
       </div>
 
-    <div class="section">
+      <div class="section">
         <h2>Beceriler</h2>
         <ul id="skills-list"></ul>
       </div>
-
 
       <div class="section">
         <h2>Referanslar</h2>
         <ul id="references-list"></ul>
       </div>
 
-      <!-- Yeni Eklenen Yabancı Diller Bölümü -->
       <div class="section">
         <h2>Yabancı Diller</h2>
         <ul id="languages-list"></ul>
@@ -234,60 +231,63 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
   <script>
-  window.onload = function () {
-  localStorage.setItem('cvData', JSON.stringify({
-    name: "Ahmet Yılmaz",
-    profession: "Yazılım Geliştirici",
-    phone: "0555 123 45 67",
-    email: "ahmet.yilmaz@example.com",
-    website: "https://ahmetyilmaz.com",
-    linkedin: "https://linkedin.com/in/ahmetyilmaz",
-    summary: "Yazılım geliştirme alanında 5 yıllık tecrübeye sahip bir profesyonelim.",
-    photo: "https://example.com/photo.jpg",
-    education: ["Boğaziçi Üniversitesi - Bilgisayar Mühendisliği"],
-    workExperience: ["ABC Yazılım - Yazılım Geliştirici (2018-2022)"],
-    skills: ["JavaScript", "React", "Node.js"],
-    references: ["Prof. Dr. Ahmet Doğan"],
-    languages: ["Türkçe (Anadil)", "İngilizce (İleri Seviye)"]
-  }));
+    window.onload = function () {
+      // Veriyi kaydet
+      const cvData = {
+        name: "Ahmet Yılmaz",
+        profession: "Yazılım Geliştirici",
+        phone: "0555 123 45 67",
+        email: "ahmet.yilmaz@example.com",
+        website: "https://ahmetyilmaz.com",
+        linkedin: "https://linkedin.com/in/ahmetyilmaz",
+        summary: "Yazılım geliştirme alanında 5 yıllık tecrübeye sahip bir profesyonelim.",
+        photo: "https://example.com/photo.jpg",
+        education: ["Boğaziçi Üniversitesi - Bilgisayar Mühendisliği"],
+        workExperience: ["ABC Yazılım - Yazılım Geliştirici (2018-2022)"],
+        skills: ["JavaScript", "React", "Node.js"],
+        references: ["Prof. Dr. Ahmet Doğan"],
+        languages: ["Türkçe (Anadil)", "İngilizce (İleri Seviye)"]
+      };
+      
+      localStorage.setItem('cvData', JSON.stringify(cvData));
+      
+      // Sayfayı güncelle
+      updateCV(cvData);
+      
+      alert('Veri başarıyla kaydedildi!');
+    };
 
-    localStorage.setItem('cvData', JSON.stringify(cvData));
+    function updateCV(cvData) {
+      // Profil verilerini güncelle
+      document.getElementById('profile-name').innerText = cvData.name || 'Ad Soyad';
+      document.getElementById('profile-profession').innerText = cvData.profession || 'Meslek';
+      document.getElementById('profile-phone').innerText = cvData.phone || 'Telefon';
+      document.getElementById('profile-email').innerText = cvData.email || 'E-posta';
+      document.getElementById('profile-website').innerText = cvData.website || 'Web Sitesi';
+      document.getElementById('profile-linkedin').innerText = cvData.linkedin || 'LinkedIn';
+      document.getElementById('profile-summary').innerText = cvData.summary || 'Kısaca kendinizi tanıtın...';
 
-    updateCV(cvData);
-    
-  alert('Veri başarıyla kaydedildi!');
-};
+      // Fotoğrafı güncelle
+      if (cvData.photo) {
+        document.getElementById('profile-photo').style.backgroundImage = `url(${cvData.photo})`;
+      }
 
+      // Liste verilerini güncelle
+      updateListById('education-list', cvData.education);
+      updateListById('work-experience-list', cvData.workExperience);
+      updateListById('skills-list', cvData.skills);
+      updateListById('references-list', cvData.references);
+      updateListById('languages-list', cvData.languages);
+    }
 
-function updateCV(cvData) {
-  document.getElementById('profile-name').innerText = cvData.name || 'Ad Soyad';
-  document.getElementById('profile-profession').innerText = cvData.profession || 'Meslek';
-  document.getElementById('profile-phone').innerText = cvData.phone || 'Telefon';
-  document.getElementById('profile-email').innerText = cvData.email || 'E-posta';
-  document.getElementById('profile-website').innerText = cvData.website || 'Web Sitesi';
-  document.getElementById('profile-linkedin').innerText = cvData.linkedin || 'LinkedIn';
-  document.getElementById('profile-summary').innerText = cvData.summary || 'Kısaca kendinizi tanıtın...';
-
-  if (cvData.photo) {
-    document.getElementById('profile-photo').style.backgroundImage = `url(${cvData.photo})`;
-  }
-
-  // Eğitim, iş deneyimi, beceriler, referanslar ve yabancı diller listelerini güncelle
-  updateListById('education-list', cvData.education);
-  updateListById('work-experience-list', cvData.workExperience);
-  updateListById('skills-list', cvData.skills);
-  updateListById('references-list', cvData.references);
-  updateListById('languages-list', cvData.languages);
-}
-
-function updateListById(elementId, data) {
-  const list = document.getElementById(elementId);
-  if (Array.isArray(data) && data.length > 0) {
-    list.innerHTML = data.map(item => `<li>${item}</li>`).join('');
-  } else {
-    list.innerHTML = '<li>Bilgi yok.</li>';
-  }
-}
+    function updateListById(elementId, data) {
+      const list = document.getElementById(elementId);
+      if (Array.isArray(data) && data.length > 0) {
+        list.innerHTML = data.map(item => `<li>${item}</li>`).join('');
+      } else {
+        list.innerHTML = '<li>Bilgi yok.</li>';
+      }
+    }
 
     function downloadPDF() {
       const element = document.querySelector('.container');
