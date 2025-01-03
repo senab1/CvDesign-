@@ -354,23 +354,24 @@ document.getElementById('skills').innerHTML = skills
 
        
     function downloadPDF() {
-        const element = document.querySelector('.cv-container'); // PDF'yi almak istediğiniz öğe
-        html2pdf()
-            .from(element)
-            .set({
-                margin: [10, 10], // PDF kenar boşlukları
-                filename: 'cv.pdf',
-                jsPDF: {
-                    unit: 'mm',
-                    format: 'a4',
-                    orientation: 'portrait',
-                },
-                html2canvas: {
-                    scale: 2, // Çözünürlük artırma
-                },
-            })
-            .save();
-    }
+    const element = document.querySelector('.cv-container'); // PDF'yi almak istediğiniz öğe
+    html2pdf()
+        .from(element)
+        .set({
+            margin: [10, 10, 10, 10], // Kenar boşlukları: [üst, sağ, alt, sol]
+            pageSize: 'A4', // Sayfa boyutu A4
+            html2canvas: {
+                scale: 2 // Çözünürlük artırma
+            },
+            jsPDF: { 
+                unit: 'mm', 
+                format: 'a4', 
+                orientation: 'portrait'
+            }
+        })
+        .save('cv.pdf');
+}
+
 
         function downloadWord() {
     const element = document.querySelector('.cv-container');
@@ -384,14 +385,15 @@ document.getElementById('skills').innerHTML = skills
             <style>
                 body {
                     font-family: Arial, sans-serif;
-                    font-size: 12pt;
-                    line-height: 1.4;
+                    font-size: 10pt; /* Küçük font boyutu */
+                    line-height: 1.2;
                     margin: 0;
+                    padding: 0;
                 }
                 .cv-container {
                     width: 100%;
                     margin: 0;
-                    padding: 20mm; /* A4 boyutunda kenar boşluğu */
+                    padding: 10mm; /* A4 kenar boşlukları */
                     box-sizing: border-box;
                 }
                 h1, h2, h3 {
@@ -399,10 +401,10 @@ document.getElementById('skills').innerHTML = skills
                     margin-bottom: 5px;
                 }
                 h1 {
-                    font-size: 1.5em;
+                    font-size: 1.2em; /* Başlık boyutunu küçültüyoruz */
                 }
                 h2 {
-                    font-size: 1.2em;
+                    font-size: 1.1em;
                 }
                 h3 {
                     font-size: 1em;
