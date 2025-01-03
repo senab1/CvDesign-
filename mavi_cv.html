@@ -165,10 +165,25 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
   <script>
     window.onload = function () {
-      const storedCVData = localStorage.getItem('cvData');
-      const cvData = storedCVData ? JSON.parse(storedCVData) : {}; 
-      updateCV(cvData);
-    };
+  localStorage.setItem('cvData', JSON.stringify({
+    name: "Ahmet Yılmaz",
+    profession: "Yazılım Geliştirici",
+    phone: "0555 123 45 67",
+    email: "ahmet.yilmaz@example.com",
+    website: "https://ahmetyilmaz.com",
+    linkedin: "https://linkedin.com/in/ahmetyilmaz",
+    summary: "Yazılım geliştirme alanında 5 yıllık tecrübeye sahip bir profesyonelim.",
+    photo: "https://example.com/photo.jpg",
+    education: ["Boğaziçi Üniversitesi - Bilgisayar Mühendisliği"],
+    workExperience: ["ABC Yazılım - Yazılım Geliştirici (2018-2022)"],
+    skills: ["JavaScript", "React", "Node.js"],
+    references: ["Prof. Dr. Ahmet Doğan"],
+    languages: ["Türkçe (Anadil)", "İngilizce (İleri Seviye)"]
+  }));
+  alert('Veri başarıyla kaydedildi!');
+};
+
+  
 
     function updateCV(cvData) {
       // Profil Bilgileri Güncelleme
