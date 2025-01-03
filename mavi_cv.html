@@ -216,7 +216,7 @@
         website: document.getElementById('website').value,
         linkedin: document.getElementById('linkedin').value,
         summary: document.getElementById('summary').value,
-        certification: document.getElementById('certificates').value,  // Sertifikaları al
+        certifications: document.getElementById('certifications').value,  // Sertifikaları al
         education: document.getElementById('education').value,
         workExperience: document.getElementById('workExperience').value,
         skills: document.getElementById('skills').value,
@@ -237,9 +237,9 @@
       document.getElementById('profile-summary').innerText = cvData.summary || 'Tanıtım Bilgisi';
 
       const certificates = document.getElementById('certificates-list');
-      if (cvData.certificates) {
+      if (cvData.certifications) {
         // Sertifikalar verisini listele
-        certificates.innerHTML = cvData.certificates.split('\n').map(item => `<li>${item}</li>`).join('');
+        certificates.innerHTML = cvData.certifications.split('\n').map(item => `<li>${item}</li>`).join('');
       } else {
         certificates.innerHTML = '<li>Bilgi yok.</li>';
       }
