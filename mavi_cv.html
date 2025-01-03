@@ -24,15 +24,43 @@
     .container {
       display: flex;
       flex-wrap: nowrap;
-      max-width: 800px;
+      width: 210mm; /* A4 genişliği */
+      height: 297mm; /* A4 yüksekliği */
       margin: 0 auto;
       padding: 0;
       background-color: #ffffff;
       border-radius: 10px;
       overflow: hidden;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      height: 100%;
     }
+
+ .sidebar .contact-info {
+    margin-top: 20px;
+    text-align: left; /* Sol hizalama için */
+    width: 100%; /* Mavi alanın dışına taşmaması için */
+    padding: 10px 0; /* Üst ve alt boşluk */
+}
+
+.sidebar .contact-info p {
+    margin: 10px 0; /* Alt boşluk */
+    display: flex; /* İkon ve metni aynı satıra koymak için */
+    align-items: center; /* İkon ve metni ortalamak için */
+    word-wrap: break-word; /* Metin taşmasını önler */
+    overflow-wrap: break-word; /* Metin taşmasını önler */
+}
+
+.sidebar .contact-info i {
+    font-size: 18px; /* İkon boyutu */
+    color: #2980b9; /* İkon rengi */
+    margin-right: 10px; /* İkon ile metin arası boşluk */
+}
+
+.sidebar .contact-info span {
+    display: inline-block; /* Metni kontrol etmek için */
+    color: black; /* Metin rengi */
+    word-wrap: break-word; /* Metin taşmasını önler */
+    overflow-wrap: break-word; /* Metin taşmasını önler */
+}
 
     .sidebar {
       width: 30%;
@@ -52,15 +80,12 @@
       border-radius: 50%;
       background-size: cover;
       background-position: center;
-      margin-bottom: 20px; /* Fotoğraf ile başlık arasındaki boşluk artırıldı */
-
+      margin-bottom: 20px;
     }
 
     .sidebar h1 {
       font-size: 20px;
       margin-top: 10px;
-      margin-bottom: 5px; /* H1 başlığı ile önceki öğe arasındaki boşluk arttırıldı */
-
     }
 
     .sidebar h2 {
@@ -77,11 +102,6 @@
       border-bottom: 3px solid #2980b9;
     }
 
-    .about h3 {
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-
     .sidebar .contact-info {
       margin-top: 20px;
       text-align: center;
@@ -89,7 +109,6 @@
 
     .sidebar .contact-info p {
       margin: 5px 0;
-      display: block;
     }
 
     .sidebar .contact-info i {
@@ -103,11 +122,8 @@
       padding: 30px;
       background-color: #1e5a83;
       color: white;
-      box-sizing: border-box;
-      min-height: 153.6vh;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
     }
 
     .content .section {
@@ -122,88 +138,17 @@
       font-weight: bold;
     }
 
-    .content .section ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+    
+  .content .section ul {
+    list-style: disc; /* Madde işareti ekler */
+    margin-left: 20px; /* Soldan boşluk */
+    padding-left: 20px; /* İçeriden boşluk */
+  }
 
-    .content .section ul li {
-      margin: 10px 0;
-      line-height: 1.5;
-      margin-bottom: 15px;
-    }
+  .content .section ul li {
+    margin-bottom: 5px; /* Liste elemanları arasına boşluk */
+  }
 
-    /* Print Styles - PDF için */
-    @media print {
-      body {
-        margin: 0;
-        padding: 0;
-      }
-
-      .container {
-        box-shadow: none;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: row;
-      }
-
-      @page {
-        size: A4;
-        margin: 0;
-      }
-
-      .sidebar {
-        width: 30%;
-        padding: 20px;
-      }
-
-      .content {
-        width: 70%;
-        padding: 30px;
-        font-size: 10pt;
-        line-height: 1.6;
-        box-sizing: border-box;
-        height: 100%;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        background-color: #1e5a83;
-      }
-
-      .content .section {
-        margin-bottom: 20px;
-      }
-
-      .content .section ul {
-        padding-left: 20px;
-      }
-
-      .container {
-        display: flex;
-        flex-direction: row;
-        height: 100%;
-      }
-
-      .content {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        height: 100%;
-        padding-bottom: 0;
-      }
-
-      .content::after {
-        content: '';
-        display: block;
-        flex-grow: 1;
-        background-color: #1e5a83;
-      }
-    }
 
     .download-btn {
       margin: 20px auto;
@@ -222,25 +167,7 @@
     .download-btn:hover {
       background-color: #1e5a83;
     }
-
-    /* Yeni CSS: İletişim Bilgilerini Alt Satıra Almak İçin */
-    .reference-contact-info {
-      display: block;
-      margin-top: 5px;
-    }
-
-    .reference-contact-info p {
-      margin: 5px 0;
-      display: block;
-    }
-    .content .section ul li {
-      margin: 8px 0;
-      padding-left: 10px;
-    }
-
   </style>
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
@@ -282,26 +209,7 @@
 
       <div class="section">
         <h2>Referanslar</h2>
-        <ul id="references-list">
-          <li>
-            <div>
-              <strong>Referans 1</strong>
-              <div class="reference-contact-info">
-                <p><i class="fas fa-phone"></i> Telefon: <span>555-123-4567</span></p>
-                <p><i class="fas fa-envelope"></i> E-posta: <span>email@example.com</span></p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div>
-              <strong>Referans 2</strong>
-              <div class="reference-contact-info">
-                <p><i class="fas fa-phone"></i> Telefon: <span>555-987-6543</span></p>
-                <p><i class="fas fa-envelope"></i> E-posta: <span>another@example.com</span></p>
-              </div>
-            </div>
-          </li>
-        </ul>
+        <ul id="references-list"></ul>
       </div>
     </div>
   </div>
@@ -325,7 +233,7 @@
       document.getElementById('profile-summary').innerText = cvData.summary || 'Tanıtım Bilgisi';
 
       if (cvData.photo) {
-        document.getElementById('profile-photo').style.backgroundImage = url('${cvData.photo}');
+        document.getElementById('profile-photo').style.backgroundImage = `url('${cvData.photo}')`;
       }
 
       updateList('education-list', cvData.education);
@@ -336,7 +244,7 @@
 
     function updateList(elementId, data) {
       const list = document.getElementById(elementId);
-      list.innerHTML = data ? data.split('\n').map(item => <li>${item}</li>).join('') : '<li>Bilgi yok.</li>';
+      list.innerHTML = data ? data.split('\n').map(item => `<li>${item}</li>`).join('') : '<li>Bilgi yok.</li>';
     }
 
     function downloadPDF() {
