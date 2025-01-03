@@ -232,6 +232,27 @@
   if (cvData) updateCV(cvData);
 };
 
+    function saveCV() {
+  const cvData = {
+    name: document.getElementById('name').value,
+    profession: document.getElementById('profession').value,
+    phone: document.getElementById('phone').value,
+    email: document.getElementById('email').value,
+    website: document.getElementById('website').value,
+    linkedin: document.getElementById('linkedin').value,
+    summary: document.getElementById('summary').value,
+    certificates: document.getElementById('certificates').value, // Sertifikalar
+    education: document.getElementById('education').value,
+    workExperience: document.getElementById('workExperience').value,
+    skills: document.getElementById('skills').value,
+    references: document.getElementById('references').value
+  };
+
+  // Verileri localStorage'a kaydediyoruz
+  localStorage.setItem('cvData', JSON.stringify(cvData));
+  alert('CV başarıyla kaydedildi!');
+}
+
 function updateCV(cvData) {
   document.getElementById('profile-name').innerText = cvData.name || 'Ad Soyad';
   document.getElementById('profile-profession').innerText = cvData.profession || 'Meslek';
