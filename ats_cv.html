@@ -285,11 +285,12 @@ window.onload = function() {
         document.getElementById('website').textContent = cvData.website || 'Web Sitesi';
         document.getElementById('summary').textContent = cvData.summary || 'Kısa bir açıklama ekleyiniz...';
 
-       const skills = cvData.skills || ""; 
+    const skills = cvData.skills || ""; 
 document.getElementById('skills').innerHTML = skills
-    .split(' ') // Boşluklarla ayırır
+    .split('\n') // Satır sonlarına göre ayırır
     .map(skill => `<li>${skill.trim()}</li>`) // Liste öğesi oluşturur
     .join('') || "<li>Beceri bilgisi bulunmamaktadır.</li>";
+
 
 
         // Eğitim bilgileri
