@@ -8,7 +8,7 @@
         /* Genel Stil */
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.4;
+            line-height: 1.3;
             margin: 0;
             padding: 0;
             background-color: #f9f9f9;
@@ -25,10 +25,10 @@
             width: 100%;
             max-width: 800px;
             background: #fff;
-            padding: 20px;
+            padding: 15px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             box-sizing: border-box;
-            font-size: 14px;
+            font-size: 12px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -41,13 +41,13 @@
         }
 
         h1 {
-            font-size: 1.8em;
+            font-size: 1.6em;
             font-weight: bold;
             margin: 10px 0;
         }
 
         h2 {
-            font-size: 1.2em;
+            font-size: 1.1em;
             font-weight: normal;
             color: #555;
             margin: 5px 0;
@@ -69,14 +69,14 @@
         }
 
         .section {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .section h3 {
-            font-size: 1.1em;
-            margin-bottom: 8px;
+            font-size: 1.0em;
+            margin-bottom: 5px;
             text-align: left;
-            border-bottom: 2px solid #333;
+            border-bottom: 1px solid #333;
             padding-bottom: 5px;
         }
 
@@ -86,13 +86,13 @@
         }
 
         ul {
-            list-style-type: disc; /* Madde işareti ekledik */
-            padding-left: 20px;
+            list-style: none;
+            padding: 0;
         }
 
         ul li {
-            margin-bottom: 8px;
-            font-size: 0.9em;
+            margin-bottom: 5px; /* Daha sık bir aralık */
+            font-size: 0.85em; /* Daha küçük yazı tipi */
         }
 
         @media print {
@@ -107,24 +107,13 @@
                 margin: auto;
                 width: 190mm; /* A4 boyutu için genişlik */
                 height: auto; /* Otomatik yükseklik */
-                padding: 20mm; /* Kenar boşlukları */
+                padding: 15mm; /* Kenar boşlukları */
                 box-shadow: none;
                 page-break-after: always; /* Sayfa sonu ayırıcı */
             }
 
             h1, h2, h3, p, ul {
-                font-size: 14px;
-            }
-
-            ul li {
-                font-size: 12pt; /* Font boyutunu büyüttük */
-            }
-
-            /* Sayfayı tek sayfada tutmak için ayar */
-            .cv-container {
-                max-width: 100%;
-                page-break-before: auto;
-                transform: scale(0.9); /* Sayfa içerik boyutunu küçültme */
+                font-size: 12px;
             }
         }
 
@@ -327,7 +316,7 @@
                     <style>
                         body {
                             font-family: Arial, sans-serif;
-                            font-size: 10pt;
+                            font-size: 9pt;
                             line-height: 1.0;
                             margin: 0;
                             padding: 0;
@@ -346,32 +335,32 @@
 
                         h1, h2, h3 {
                             text-align: center;
-                            margin-bottom:5px;
+                            margin-bottom: 5px;
                         }
 
                         h1 {
-                            font-size: 1.2em;
+                            font-size: 1.0em;
                         }
 
                         h2 {
-                            font-size: 1.1em;
+                            font-size: 0.9em;
                         }
 
                         h3 {
-                            font-size: 1em;
+                            font-size: 0.85em;
                             border-bottom: 1px solid #333;
                             padding-bottom: 2px;
                         }
 
                         ul {
-                            list-style: disc;
-                            padding-left: 20px;
+                            list-style: none;
+                            padding: 0;
                             margin: 0;
                         }
 
                         ul li {
-                            margin-bottom: 8px;
-                            font-size: 10pt;
+                            margin-bottom: 5px;
+                            font-size: 9pt;
                         }
 
                         @page {
