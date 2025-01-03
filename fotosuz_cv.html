@@ -275,25 +275,24 @@ document.getElementById('skills').innerHTML = skills
     const element = document.querySelector('.container');
     const content = element.innerHTML;
 
-    // Inline styles for headers to ensure underline in Word
-    const contentWithInlineStyles = content.replace(/<h2>/g, '<h2 style="text-decoration: underline; font-size: 18px; color: #00518b;">');
-
     const header = `
 <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
   <head>
     <meta charset='utf-8'>
     <title>CV</title>
     <style>
-      body { font-family: Arial, sans-serif; color: #333; }
-      ul { list-style-type: none; padding: 0; }
-      li { margin-bottom: 10px; }
+      @page { size: A4; margin: 10mm; }
+      body { font-family: Arial, sans-serif; font-size: 11pt; line-height: 1.5; color: #333; }
+      h2 { text-decoration: underline; font-size: 14pt; color: #00518b; }
+      ul { padding: 0; list-style-type: none; }
+      .container { page-break-inside: avoid; }
     </style>
   </head>
   <body>
 `;
 
     const footer = `</body></html>`;
-    const sourceHTML = header + contentWithInlineStyles + footer;
+    const sourceHTML = header + content + footer;
 
     const blob = new Blob(['\ufeff', sourceHTML], { type: 'application/msword' });
     const url = URL.createObjectURL(blob);
