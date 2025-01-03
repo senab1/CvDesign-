@@ -241,7 +241,7 @@
     website: document.getElementById('website').value,
     linkedin: document.getElementById('linkedin').value,
     summary: document.getElementById('summary').value,
-    certificates: document.getElementById('certificates').value, // Sertifikalar
+    certificates: document.getElementById('certificates').value, 
     education: document.getElementById('education').value,
     workExperience: document.getElementById('workExperience').value,
     skills: document.getElementById('skills').value,
@@ -271,6 +271,7 @@ function updateCV(cvData) {
   document.getElementById('profile-website').innerText = cvData.website || 'Web Sitesi';
   document.getElementById('profile-linkedin').innerText = cvData.linkedin || 'LinkedIn';
   document.getElementById('profile-summary').innerText = cvData.summary || 'Tanıtım Bilgisi';
+  document.getElementById('certificates').innerText=cvData.certificates||'Sertifikalar';
 
   if (cvData.photo) {
     document.getElementById('profile-photo').style.backgroundImage = `url('${cvData.photo}')`;
@@ -279,7 +280,6 @@ function updateCV(cvData) {
   updateList('education-list', cvData.education);
   updateList('work-experience-list', cvData.workExperience);
   updateList('skills-list', cvData.skills);
-  updateList('certificates-list', cvData.certificates); // Sertifikalar
   updateList('references-list', cvData.references);
 }
 
