@@ -285,14 +285,12 @@ window.onload = function() {
         document.getElementById('website').textContent = cvData.website || 'Web Sitesi';
         document.getElementById('summary').textContent = cvData.summary || 'Kısa bir açıklama ekleyiniz...';
 
-        // Becerileri alt alta listele
-        const skills = cvData.skills || ""; // Eğer beceriler boşsa, boş string atıyoruz
-        if (skills) {
-            // Becerileri virgülle ayırarak alt alta ekliyoruz
-            document.getElementById('skills').innerHTML = skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('');
-        } else {
-            document.getElementById('skills').innerHTML = "<li>Beceri bilgisi bulunmamaktadır.</li>";
-        }
+       const skills = cvData.skills || ""; 
+document.getElementById('skills').innerHTML = skills
+    .split(' ') // Boşluklarla ayırır
+    .map(skill => `<li>${skill.trim()}</li>`) // Liste öğesi oluşturur
+    .join('') || "<li>Beceri bilgisi bulunmamaktadır.</li>";
+
 
         // Eğitim bilgileri
         const education = cvData.education || "";
