@@ -411,8 +411,8 @@ function downloadWord() {
             <style>
                 body {
                     font-family: Arial, sans-serif;
-                    font-size: 8pt; /* Yazı boyutunu küçültüyoruz */
-                    line-height: 1.0;
+                    font-size: 10pt; /* Yazı boyutunu 10pt olarak ayarladık */
+                    line-height: 1.2;
                     margin: 0;
                     padding: 0;
                     width: 100%;
@@ -424,21 +424,21 @@ function downloadWord() {
                     margin: 0;
                     padding: 0;
                     box-sizing: border-box;
-                    transform: scale(0.9); /* İçeriği küçültme */
-                    page-break-after: always;
+                    transform: scale(0.85); /* İçeriği %85 oranında küçültüyoruz */
+                    page-break-after: avoid; /* Sayfa sonu yapmıyoruz */
                 }
                 h1, h2, h3 {
                     text-align: center;
                     margin-bottom: 5px;
                 }
                 h1 {
-                    font-size: 1.0em;
+                    font-size: 1.3em; /* Başlık boyutunu biraz küçültüyoruz */
                 }
                 h2 {
-                    font-size: 0.9em;
+                    font-size: 1.1em; /* Başlık boyutunu biraz küçültüyoruz */
                 }
                 h3 {
-                    font-size: 0.8em;
+                    font-size: 1.0em;
                     border-bottom: 1px solid #333;
                     padding-bottom: 2px;
                 }
@@ -447,8 +447,8 @@ function downloadWord() {
                     padding: 0;
                 }
                 ul li {
-                    margin-bottom: 5px;
-                    font-size: 8pt;
+                    margin-bottom: 3px; /* Satır aralarını kısaltıyoruz */
+                    font-size: 9pt; /* Beceriler ve diğer metin için küçük yazı boyutu */
                 }
             </style>
         </head>
@@ -466,6 +466,7 @@ function downloadWord() {
     a.click();
     document.body.removeChild(a);
 }
+
 
     </script>
 </body>
