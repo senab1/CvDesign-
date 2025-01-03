@@ -234,7 +234,7 @@
   <script>
  window.onload = function () {
   const storedCVData = localStorage.getItem('cvData');
-  const cvData = storedCVData ? JSON.parse(storedCVData) : {}; // localStorage'dan oku veya boş obje
+  const cvData = storedCVData ? JSON.parse(storedCVData) : {};
   updateCV(cvData);
 };
 
@@ -262,10 +262,13 @@ function updateListById(elementId, data) {
   const list = document.getElementById(elementId);
   if (Array.isArray(data)) {
     list.innerHTML = data.map(item => `<li>${item}</li>`).join('');
+  } else if (data) {
+    list.innerHTML = `<li>${data}</li>`;
   } else {
     list.innerHTML = '<li>Bilgi yok.</li>';
   }
 }
+
 
 
     function downloadPDF() {
