@@ -358,22 +358,24 @@ document.getElementById('skills').innerHTML = skills
     html2pdf()
         .from(element)
         .set({
-            margin: [10, 10, 10, 10], // Kenar boşlukları: [üst, sağ, alt, sol]
-            pageSize: 'A4', // Sayfa boyutu A4
+            margin: 0, // Kenar boşluklarını sıfırlıyoruz
+            pageSize: 'A4', // Sayfa boyutunu A4 olarak belirliyoruz
             html2canvas: {
-                scale: 2 // Çözünürlük artırma
+                scale: 4, // Çözünürlüğü arttırıyoruz, daha net bir çıktı için
+                letterRendering: true
             },
             jsPDF: { 
                 unit: 'mm', 
                 format: 'a4', 
-                orientation: 'portrait'
+                orientation: 'portrait',
+                compress: true
             }
         })
         .save('cv.pdf');
 }
 
 
-        function downloadWord() {
+       function downloadWord() {
     const element = document.querySelector('.cv-container');
     const content = `
         <html xmlns:o='urn:schemas-microsoft-com:office:office' 
@@ -385,15 +387,17 @@ document.getElementById('skills').innerHTML = skills
             <style>
                 body {
                     font-family: Arial, sans-serif;
-                    font-size: 10pt; /* Küçük font boyutu */
-                    line-height: 1.2;
+                    font-size: 8pt; /* Yazı boyutunu küçültüyoruz */
+                    line-height: 1.0;
                     margin: 0;
                     padding: 0;
+                    width: 100%;
+                    height: 100%;
                 }
                 .cv-container {
                     width: 100%;
                     margin: 0;
-                    padding: 10mm; /* A4 kenar boşlukları */
+                    padding: 0;
                     box-sizing: border-box;
                 }
                 h1, h2, h3 {
@@ -401,13 +405,13 @@ document.getElementById('skills').innerHTML = skills
                     margin-bottom: 5px;
                 }
                 h1 {
-                    font-size: 1.2em; /* Başlık boyutunu küçültüyoruz */
+                    font-size: 1.0em; /* Başlıkları küçültüyoruz */
                 }
                 h2 {
-                    font-size: 1.1em;
+                    font-size: 0.9em;
                 }
                 h3 {
-                    font-size: 1em;
+                    font-size: 0.8em;
                     border-bottom: 1px solid #333;
                     padding-bottom: 2px;
                 }
@@ -417,6 +421,7 @@ document.getElementById('skills').innerHTML = skills
                 }
                 ul li {
                     margin-bottom: 5px;
+                    font-size: 8pt; /* Liste öğeleri de daha küçük */
                 }
             </style>
         </head>
@@ -434,6 +439,7 @@ document.getElementById('skills').innerHTML = skills
     a.click();
     document.body.removeChild(a);
 }
+
 
     </script>
 </body>
