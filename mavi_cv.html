@@ -26,7 +26,7 @@
       display: flex;
       flex-wrap: nowrap;
       width: 210mm; /* A4 genişliği */
-      height: 295mm; /* A4 yüksekliği */
+      height: 297mm; /* A4 yüksekliği */
       margin: 0 auto;
       padding: 0;
       background-color: #ffffff;
@@ -334,16 +334,6 @@ resizeContent();
           compress: true
         }
       };
-
-      html2pdf().set(options).from(element).toPdf().get('pdf').then(function(pdf) {
-        // PDF'in sadece bir sayfada yer alacak şekilde ayarlanması
-        const totalPages = pdf.internal.pages.length;
-        if (totalPages > 1) {
-          // Eğer ikinci sayfa varsa, onu sil
-          pdf.deletePage(2);
-        }
-
-      },
     })
     .save();
 }
