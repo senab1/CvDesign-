@@ -167,6 +167,11 @@
     .download-btn:hover {
       background-color: #1e5a83;
     }
+    .text-content{
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+    }
   </style>
 </head>
 <body>
@@ -254,6 +259,22 @@
       localStorage.setItem('cvData', JSON.stringify(cvData));  // Veriyi kaydet
       alert('CV başarıyla kaydedildi!');
     }
+
+    function resizeContent() {
+  const container = document.querySelector('.container');
+  const contentHeight = container.scrollHeight;
+
+  // A4 yüksekliği: 297mm (1mm = 3.779528 px)
+  const a4Height = 297 * 3.779528;
+
+  if (contentHeight > a4Height) {
+    container.style.transform = `scale(${a4Height / contentHeight})`;
+    container.style.transformOrigin = 'top left';
+  }
+}
+
+resizeContent();
+
 
     function updateCV(cvData) {
       document.getElementById('profile-name').innerText = cvData.name || 'Ad Soyad';
