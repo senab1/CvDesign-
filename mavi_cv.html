@@ -313,30 +313,33 @@ resizeContent();
       }
     }
 
-   function downloadPDF() {
+  function downloadPDF() {
   const element = document.querySelector('.container'); // PDF'e dönüştürülecek alan
+  if (!element) {
+    alert("PDF oluşturulacak alan bulunamadı!");
+    return;
+  }
 
   html2pdf()
     .from(element)
     .set({
       margin: 0,
       filename: 'CV.pdf',
-      image: { type: 'jpeg', quality: 1 },
+      image: { type: 'jpeg', quality: 0.98 },
       html2canvas: {
-        scale: 2, // Daha yüksek çözünürlük için ölçek artırılır
-        useCORS: true, // Harici kaynakların yüklenmesi için CORS ayarı
+        scale: 2, // Yüksek çözünürlük için ölçek
+        useCORS: true, // CORS hatalarını önler
       },
       jsPDF: {
         unit: 'mm',
-        format: 'a4', // Standart A4 formatı
+        format: 'a4',
         orientation: 'portrait', // Dikey yönlendirme
-        putOnlyUsedFonts: true,
-          compress: true
-        }
-      };
+      }
     })
-    .save();
+    .save()
+    .catch((error) => console.error("PDF oluşturma sırasında hata:", error));
 }
+
 
   </script>
 </body>
