@@ -330,6 +330,19 @@ resizeContent();
         unit: 'mm',
         format: 'a4', // Standart A4 formatı
         orientation: 'portrait', // Dikey yönlendirme
+        putOnlyUsedFonts: true,
+          compress: true
+        }
+      };
+
+      html2pdf().set(options).from(element).toPdf().get('pdf').then(function(pdf) {
+        // PDF'in sadece bir sayfada yer alacak şekilde ayarlanması
+        const totalPages = pdf.internal.pages.length;
+        if (totalPages > 1) {
+          // Eğer ikinci sayfa varsa, onu sil
+          pdf.deletePage(2);
+        }
+
       },
     })
     .save();
